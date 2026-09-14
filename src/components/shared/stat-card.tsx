@@ -33,17 +33,17 @@ export function StatCard({
     <div
       ref={ref}
       className={cn(
-        "group relative overflow-hidden rounded-xl border border-border bg-card p-5 transition-all duration-300",
-        "hover:border-gold/20 hover:shadow-premium",
+        "group relative overflow-hidden rounded-2xl border border-[rgba(0,245,212,0.14)] bg-[#0A1B30]/70 p-6 backdrop-blur-xl transition-all duration-300 card-accent-line",
+        "hover:border-[rgba(0,245,212,0.4)] hover:shadow-[0_10px_30px_rgba(0,245,212,0.1)] hover:-translate-y-1",
         className
       )}
     >
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+          <p className="text-xs font-semibold uppercase tracking-wider text-[#7E97B8]">
             {label}
           </p>
-          <p className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+          <p className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">
             {prefix}
             {count.toLocaleString("en-IN")}
             {suffix}
@@ -52,17 +52,17 @@ export function StatCard({
             <p
               className={cn(
                 "mt-1.5 text-xs font-medium",
-                trend.value >= 0 ? "text-success" : "text-destructive"
+                trend.value >= 0 ? "text-[#00F5D4]" : "text-destructive"
               )}
             >
               {trend.value >= 0 ? "↑" : "↓"} {Math.abs(trend.value)}%{" "}
-              <span className="text-muted-foreground">{trend.label}</span>
+              <span className="text-[#7E97B8]">{trend.label}</span>
             </p>
           )}
         </div>
         {Icon && (
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted transition-colors group-hover:bg-gold/10">
-            <Icon className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-gold" />
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[rgba(0,245,212,0.15)] bg-[#0D223E] transition-all duration-300 group-hover:border-[#00F5D4] group-hover:bg-[#00F5D4]/10 group-hover:shadow-[0_0_15px_rgba(0,245,212,0.25)]">
+            <Icon className="h-5 w-5 text-[#7E97B8] transition-colors group-hover:text-[#00F5D4]" />
           </div>
         )}
       </div>

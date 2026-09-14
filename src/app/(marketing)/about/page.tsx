@@ -30,22 +30,27 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-background pt-24 pb-20 relative overflow-hidden">
+    <div className="flex flex-col min-h-screen bg-[#040D1A] pt-24 pb-20 relative overflow-hidden text-white">
       {/* Ambient Looping Architectural Drone Video & High-Resolution Background Image */}
-      <AmbientVideoBg preset="architecture" variant="light" overlayOpacity={0.62} showControls={false} />
+      <AmbientVideoBg preset="architecture" variant="dark" overlayOpacity={0.80} showControls={false} />
 
-      <main className="flex-1">
+      {/* Ambient background glow */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(0,245,212,0.08)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.06)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(0,245,212,0.06)_0%,transparent_70%)] pointer-events-none" />
+
+      <main className="flex-1 relative z-10">
         {/* Hero Section */}
         <section className="section-padding container-wide relative overflow-hidden text-center">
           <div className="max-w-4xl mx-auto space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-semibold uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00F5D4]/10 border border-[rgba(0,245,212,0.3)] text-[#00F5D4] text-xs font-semibold uppercase tracking-widest">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Engineering the Operating System for Communities</span>
             </div>
-            <h1 className="font-serif text-5xl md:text-7xl font-semibold tracking-tight text-foreground leading-[1.1]">
-              The Vision Behind <span className="text-gradient-gold">LeaseIQ</span>
+            <h1 className="font-serif text-5xl md:text-7xl font-semibold tracking-tight text-white leading-[1.1]">
+              The Vision Behind <span className="text-gradient-cyan">LeaseIQ</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-[#7E97B8] font-light max-w-2xl mx-auto leading-relaxed">
               We believe residential communities, RWAs, and housing societies are the foundation of modern urban living. They deserve enterprise-grade software, AI-powered automation, and uncompromised privacy.
             </p>
           </div>
@@ -72,19 +77,19 @@ export default function AboutPage() {
                 badge: "North Hub",
               },
             ].map((loc, i) => (
-              <div key={i} className="relative h-60 rounded-3xl overflow-hidden border border-border/70 shadow-sm group">
+              <div key={i} className="relative h-60 rounded-3xl overflow-hidden border border-[rgba(0,245,212,0.14)] hover:border-[rgba(0,245,212,0.4)] shadow-xl group card-glow backdrop-blur-xl transition-all duration-300">
                 <div
                   className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                   style={{ backgroundImage: `url(${loc.image})` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
                 <div className="absolute top-3 left-3">
-                  <Badge className="bg-gold text-black border-none font-bold text-[10px]">
+                  <Badge className="bg-[#00F5D4] text-[#040D1A] border-none font-bold text-[10px]">
                     {loc.badge}
                   </Badge>
                 </div>
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <p className="text-xs font-mono text-gold flex items-center gap-1">
+                  <p className="text-xs font-mono text-[#00F5D4] flex items-center gap-1">
                     <MapPin className="w-3 h-3" /> {loc.location}
                   </p>
                   <p className="text-sm font-semibold text-white mt-0.5">{loc.title}</p>
@@ -95,7 +100,7 @@ export default function AboutPage() {
         </section>
 
         {/* The Problem Section: Balanced 6-Point Matrix */}
-        <section className="section-padding bg-surface">
+        <section className="section-padding relative">
           <div className="container-wide">
             <SectionHeading
               label="THE CHALLENGE"
@@ -137,13 +142,13 @@ export default function AboutPage() {
                   desc: "Accounting is isolated from the gate, gate is isolated from resident directories, leaving committee members with zero unified visibility." 
                 }
               ].map((item, i) => (
-                <Card key={i} className="bg-background shadow-premium border-border/60 hover:border-gold/30 transition-all p-2 rounded-3xl">
+                <Card key={i} className="bg-[#0A1B30]/80 shadow-2xl border border-[rgba(0,245,212,0.14)] hover:border-[rgba(0,245,212,0.4)] transition-all duration-300 p-2 rounded-3xl card-accent-line card-glow backdrop-blur-xl">
                   <CardHeader>
-                    <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center mb-3">
-                      <item.icon className="w-5 h-5 text-gold" />
+                    <div className="w-10 h-10 rounded-xl bg-[#00F5D4]/10 border border-[rgba(0,245,212,0.2)] flex items-center justify-center mb-3">
+                      <item.icon className="w-5 h-5 text-[#00F5D4]" />
                     </div>
-                    <CardTitle className="text-foreground text-lg">{item.title}</CardTitle>
-                    <CardDescription className="text-muted-foreground text-xs leading-relaxed mt-2">{item.desc}</CardDescription>
+                    <CardTitle className="text-white text-lg">{item.title}</CardTitle>
+                    <CardDescription className="text-[#7E97B8] text-xs leading-relaxed mt-2">{item.desc}</CardDescription>
                   </CardHeader>
                 </Card>
               ))}
@@ -154,17 +159,17 @@ export default function AboutPage() {
         {/* Vision & Mission */}
         <section className="section-padding container-wide">
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
-            <div className="p-8 md:p-10 rounded-3xl bg-surface border border-border/60 shadow-premium space-y-4">
-              <span className="text-xs font-semibold text-gold uppercase tracking-wider">Our Vision</span>
-              <h2 className="font-serif text-3xl font-semibold text-foreground">The Operating System for Communities</h2>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+            <div className="p-8 md:p-10 rounded-3xl bg-[#0A1B30]/80 border border-[rgba(0,245,212,0.14)] hover:border-[rgba(0,245,212,0.35)] transition-all duration-300 shadow-2xl space-y-4 card-accent-line card-glow backdrop-blur-xl">
+              <span className="text-xs font-semibold text-[#00F5D4] uppercase tracking-wider">Our Vision</span>
+              <h2 className="font-serif text-3xl font-semibold text-white">The Operating System for Communities</h2>
+              <p className="text-sm text-[#7E97B8] leading-relaxed">
                 To power every residential community across India with an intelligent, reliable digital infrastructure that elevates community trust, protects property value, and simplifies everyday life.
               </p>
             </div>
-            <div className="p-8 md:p-10 rounded-3xl bg-surface border border-border/60 shadow-premium space-y-4">
-              <span className="text-xs font-semibold text-gold uppercase tracking-wider">Our Mission</span>
-              <h2 className="font-serif text-3xl font-semibold text-foreground">Zero Friction. 100% Transparency.</h2>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+            <div className="p-8 md:p-10 rounded-3xl bg-[#0A1B30]/80 border border-[rgba(0,245,212,0.14)] hover:border-[rgba(0,245,212,0.35)] transition-all duration-300 shadow-2xl space-y-4 card-accent-line card-glow backdrop-blur-xl">
+              <span className="text-xs font-semibold text-[#00F5D4] uppercase tracking-wider">Our Mission</span>
+              <h2 className="font-serif text-3xl font-semibold text-white">Zero Friction. 100% Transparency.</h2>
+              <p className="text-sm text-[#7E97B8] leading-relaxed">
                 To automate society finance, simplify gate access control, empower committee decision-making with AI analytics, and deliver a luxury digital experience to residents and staff alike.
               </p>
             </div>
@@ -172,7 +177,7 @@ export default function AboutPage() {
         </section>
 
         {/* Security & Regulatory Compliance */}
-        <section className="section-padding bg-surface">
+        <section className="section-padding relative">
           <div className="container-wide">
             <SectionHeading
               label="SECURITY & COMPLIANCE"
@@ -189,13 +194,13 @@ export default function AboutPage() {
                 { title: "Role-Based Access Control", desc: "Strict RBAC segregation preventing guards or vendors from accessing financial or personal records." },
                 { title: "VAPT Audited & Certified", desc: "Annual third-party vulnerability and penetration testing to ensure resilient cloud infrastructure." },
               ].map((item, idx) => (
-                <div key={idx} className="p-6 rounded-3xl bg-background border border-border/60 flex flex-col justify-between shadow-sm">
-                  <div className="w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-4">
+                <div key={idx} className="p-6 rounded-3xl bg-[#0A1B30]/80 border border-[rgba(0,245,212,0.14)] hover:border-[rgba(0,245,212,0.4)] flex flex-col justify-between shadow-xl transition-all duration-300 card-accent-line card-glow backdrop-blur-xl">
+                  <div className="w-10 h-10 rounded-full bg-[#00F5D4]/10 text-[#00F5D4] border border-[rgba(0,245,212,0.2)] flex items-center justify-center mb-4">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground text-base mb-2">{item.title}</h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                    <h3 className="font-semibold text-white text-base mb-2">{item.title}</h3>
+                    <p className="text-xs text-[#7E97B8] leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -217,20 +222,20 @@ export default function AboutPage() {
               { title: "Connected Community", icon: Users, desc: "High-speed amenity booking, digital notices, committee polls, and transparent helpdesk.", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=600&q=80" },
               { title: "Smart Perimeter Guard", icon: Shield, desc: "Digital visitor authorization, ANPR vehicle cameras, boom barrier automation, and delivery passes.", img: "https://images.unsplash.com/photo-1590674899484-d5640e854abe?auto=format&fit=crop&w=600&q=80" }
             ].map((item, i) => (
-              <Card key={i} className="bg-card shadow-premium border-border/60 overflow-hidden rounded-3xl hover:border-gold/30 transition-all flex flex-col justify-between">
-                <div className="relative h-32 w-full overflow-hidden bg-muted">
+              <Card key={i} className="bg-[#0A1B30]/80 shadow-2xl border border-[rgba(0,245,212,0.14)] overflow-hidden rounded-3xl hover:border-[rgba(0,245,212,0.4)] transition-all duration-300 flex flex-col justify-between card-accent-line card-glow backdrop-blur-xl">
+                <div className="relative h-32 w-full overflow-hidden bg-[#061220]">
                   <div
                     className="w-full h-full bg-cover bg-center transition-transform duration-700 hover:scale-105"
                     style={{ backgroundImage: `url(${item.img})` }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-                  <div className="absolute bottom-2.5 left-3 z-10 w-8 h-8 rounded-lg bg-gold text-black flex items-center justify-center font-bold">
+                  <div className="absolute bottom-2.5 left-3 z-10 w-8 h-8 rounded-lg bg-[#00F5D4] text-[#040D1A] flex items-center justify-center font-bold shadow-[0_0_10px_rgba(0,245,212,0.3)]">
                     <item.icon className="w-4 h-4" />
                   </div>
                 </div>
                 <CardHeader className="p-5">
-                  <CardTitle className="font-serif text-lg text-foreground">{item.title}</CardTitle>
-                  <CardDescription className="text-xs text-muted-foreground leading-relaxed mt-2">{item.desc}</CardDescription>
+                  <CardTitle className="font-serif text-lg text-white">{item.title}</CardTitle>
+                  <CardDescription className="text-xs text-[#7E97B8] leading-relaxed mt-2">{item.desc}</CardDescription>
                 </CardHeader>
               </Card>
             ))}
@@ -239,13 +244,13 @@ export default function AboutPage() {
 
         {/* CTA */}
         <section className="section-padding text-center">
-          <div className="container-narrow space-y-8 bg-surface p-12 md:p-16 rounded-3xl shadow-premium border border-border/60 max-w-4xl mx-auto">
-            <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground">Transform Your Society Today</h2>
-            <p className="text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
+          <div className="container-narrow space-y-8 bg-[#0A1B30]/80 p-12 md:p-16 rounded-3xl shadow-2xl border border-[rgba(0,245,212,0.14)] max-w-4xl mx-auto card-accent-line card-glow backdrop-blur-xl">
+            <h2 className="font-serif text-4xl md:text-5xl font-semibold text-white">Transform Your Society Today</h2>
+            <p className="text-base text-[#7E97B8] max-w-xl mx-auto leading-relaxed">
               Experience the smarter way to manage your residential community. Book a tailored walk-through with our PropTech engineering consultants.
             </p>
             <div className="pt-2">
-              <Button size="lg" asChild className="bg-gold text-black hover:bg-gold/90 px-8 h-12 rounded-full font-semibold">
+              <Button size="lg" asChild className="bg-[#00F5D4] text-[#040D1A] hover:bg-[#00F5D4]/90 font-bold shadow-[0_0_15px_rgba(0,245,212,0.3)] px-8 h-12 rounded-full">
                 <Link href="/book-demo">
                   Schedule 1-on-1 Presentation <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>

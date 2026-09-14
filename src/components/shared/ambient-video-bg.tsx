@@ -148,7 +148,7 @@ export function AmbientVideoBg({
   videoSrc,
   posterImage,
   overlayOpacity,
-  variant = "light",
+  variant = "dark",
   showControls = false,
 }: AmbientVideoBgProps) {
   const prefersReduced = useReducedMotion();
@@ -162,14 +162,14 @@ export function AmbientVideoBg({
   const activePoster = posterImage || activePreset.poster;
 
   // Ensure background images and videos are clearly visible to the user
-  // Normalize incoming overlayOpacity so that high values (like 0.94) don't wash out the imagery
+  // Normalize incoming overlayOpacity so that high values don't wash out the imagery
   const normalizedOpacity =
     overlayOpacity !== undefined
       ? overlayOpacity > 0.8
-        ? 0.55 + (overlayOpacity - 0.8) * 0.4 // 0.94 -> 0.606
+        ? 0.55 + (overlayOpacity - 0.8) * 0.4
         : overlayOpacity
       : variant === "dark"
-      ? 0.70
+      ? 0.72
       : 0.58;
 
   useEffect(() => {
@@ -196,13 +196,13 @@ export function AmbientVideoBg({
     <div
       className={`absolute inset-0 overflow-hidden pointer-events-none select-none z-0 ${className}`}
     >
-      {/* High-Resolution Photographic Poster Layer (Clearly visible with rich architectural depth) */}
+      {/* High-Resolution Photographic Poster Layer */}
       <div
         className="absolute inset-0 bg-cover bg-center transition-opacity duration-700"
         style={{
           backgroundImage: `url(${activePoster})`,
-          opacity: 0.88,
-          filter: "brightness(0.96) contrast(1.06) saturate(1.05)",
+          opacity: 0.80,
+          filter: "brightness(0.92) contrast(1.1) saturate(1.05)",
         }}
       />
 
@@ -227,8 +227,8 @@ export function AmbientVideoBg({
       )}
 
       {/* Procedural High-End Architectural Motion Grid & Particle Canvas */}
-      <div className="absolute inset-0 z-[1] overflow-hidden opacity-30">
-        {/* Animated Architectural Light Beams */}
+      <div className="absolute inset-0 z-[1] overflow-hidden opacity-35">
+        {/* Animated Electric Cyan Light Beam */}
         <motion.div
           animate={{
             x: ["-10%", "10%", "-10%"],
@@ -236,7 +236,7 @@ export function AmbientVideoBg({
             rotate: [-2, 2, -2],
           }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-[30%] left-[15%] w-[800px] h-[700px] rounded-full bg-gradient-to-tr from-gold/15 via-gold/5 to-transparent blur-[120px] pointer-events-none"
+          className="absolute -top-[30%] left-[15%] w-[800px] h-[700px] rounded-full bg-gradient-to-tr from-[#00F5D4]/15 via-[#3B82F6]/10 to-transparent blur-[130px] pointer-events-none"
         />
         <motion.div
           animate={{
@@ -244,14 +244,14 @@ export function AmbientVideoBg({
             y: ["5%", "-5%", "5%"],
           }}
           transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[20%] -right-[10%] w-[700px] h-[600px] rounded-full bg-gradient-to-br from-primary/10 via-primary/5 to-transparent blur-[140px] pointer-events-none"
+          className="absolute top-[20%] -right-[10%] w-[700px] h-[600px] rounded-full bg-gradient-to-br from-[#8B5CF6]/15 via-[#00F5D4]/8 to-transparent blur-[140px] pointer-events-none"
         />
 
         {/* High-Tech Subtle Grid Pattern */}
         <div
-          className="absolute inset-0 opacity-[0.04] dark:opacity-[0.08]"
+          className="absolute inset-0 opacity-[0.08]"
           style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
+            backgroundImage: `radial-gradient(circle at 2px 2px, #00F5D4 1px, transparent 0)`,
             backgroundSize: "40px 40px",
           }}
         />
@@ -273,7 +273,7 @@ export function AmbientVideoBg({
                     `${10 + (i % 3) * 25}%`,
                     `${20 + (i % 3) * 25}%`,
                   ],
-                  opacity: [0.15, 0.35, 0.15],
+                  opacity: [0.15, 0.4, 0.15],
                 }}
                 transition={{
                   duration: 8 + i * 2,
@@ -281,39 +281,39 @@ export function AmbientVideoBg({
                   ease: "easeInOut",
                   delay: i * 0.8,
                 }}
-                className="absolute w-2 h-2 rounded-full bg-gold/40 blur-[1px]"
+                className="absolute w-2 h-2 rounded-full bg-[#00F5D4]/40 blur-[1px]"
               />
             ))}
           </div>
         )}
       </div>
 
-      {/* Adaptive Translucent Vignette & Gradients (Ensuring background imagery shines through) */}
+      {/* Adaptive Translucent Vignette & Gradients (Deep Space Navy #040D1A) */}
       {variant === "dark" ? (
         <>
           <div
             className="absolute inset-0 z-[2]"
             style={{
-              background: `radial-gradient(ellipse at 50% 40%, rgba(18, 18, 23, ${
-                normalizedOpacity * 0.7
-              }) 0%, rgba(18, 18, 23, ${normalizedOpacity}) 70%, rgba(18, 18, 23, 0.92) 100%)`,
+              background: `radial-gradient(ellipse at 50% 40%, rgba(4, 13, 26, ${
+                normalizedOpacity * 0.65
+              }) 0%, rgba(4, 13, 26, ${normalizedOpacity}) 70%, rgba(4, 13, 26, 0.96) 100%)`,
             }}
           />
-          <div className="absolute inset-0 z-[2] bg-gradient-to-b from-[#121217]/70 via-transparent to-[#121217]/85" />
+          <div className="absolute inset-0 z-[2] bg-gradient-to-b from-[#040D1A]/85 via-transparent to-[#040D1A]/95" />
         </>
       ) : (
         <>
           <div
             className="absolute inset-0 z-[2]"
             style={{
-              background: `radial-gradient(ellipse at 50% 35%, rgba(255, 255, 255, ${
+              background: `radial-gradient(ellipse at 50% 35%, rgba(4, 13, 26, ${
                 normalizedOpacity * 0.65
-              }) 0%, rgba(250, 250, 248, ${
+              }) 0%, rgba(6, 18, 32, ${
                 normalizedOpacity * 0.9
-              }) 65%, rgba(250, 250, 248, 0.92) 100%)`,
+              }) 65%, rgba(4, 13, 26, 0.96) 100%)`,
             }}
           />
-          <div className="absolute inset-0 z-[2] bg-gradient-to-b from-background/45 via-transparent to-background/70" />
+          <div className="absolute inset-0 z-[2] bg-gradient-to-b from-[#040D1A]/70 via-transparent to-[#040D1A]/85" />
         </>
       )}
 
@@ -322,18 +322,18 @@ export function AmbientVideoBg({
         <div className="absolute bottom-6 right-6 z-20 pointer-events-auto hidden sm:flex items-center gap-2">
           <button
             onClick={togglePlay}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card/85 hover:bg-card border border-border/60 text-xs font-medium text-foreground backdrop-blur-md shadow-sm transition-all hover:border-gold/40 group"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0A1B30]/85 hover:bg-[#0A1B30] border border-[rgba(0,245,212,0.14)] text-xs font-medium text-white backdrop-blur-md shadow-sm transition-all hover:border-[rgba(0,245,212,0.4)] group"
             title={isPlaying ? "Pause ambient video motion" : "Play ambient video motion"}
           >
-            <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <Video className="w-3.5 h-3.5 text-gold" />
-            <span className="text-[11px] text-muted-foreground group-hover:text-foreground">
+            <span className="flex h-2 w-2 rounded-full bg-[#00F5D4] animate-pulse" />
+            <Video className="w-3.5 h-3.5 text-[#00F5D4]" />
+            <span className="text-[11px] text-[#7E97B8] group-hover:text-white">
               {isPlaying ? activePreset.label : "Video Paused"}
             </span>
             {isPlaying ? (
-              <Pause className="w-3 h-3 text-muted-foreground ml-0.5" />
+              <Pause className="w-3 h-3 text-[#7E97B8] ml-0.5" />
             ) : (
-              <Play className="w-3 h-3 text-gold ml-0.5" />
+              <Play className="w-3 h-3 text-[#00F5D4] ml-0.5" />
             )}
           </button>
         </div>

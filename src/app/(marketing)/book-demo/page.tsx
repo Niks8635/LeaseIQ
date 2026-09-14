@@ -86,57 +86,61 @@ export default function BookDemoPage() {
   };
 
   return (
-    <div className="relative min-h-screen pt-24 pb-20 overflow-hidden bg-background">
+    <div className="relative min-h-screen pt-24 pb-20 overflow-hidden bg-[#040D1A] text-white">
       {/* Ambient Looping Twilight Skyline Drone Video & High-Resolution Background Image */}
-      <AmbientVideoBg preset="nightscape" variant="light" overlayOpacity={0.62} showControls={false} />
+      <AmbientVideoBg preset="nightscape" variant="dark" overlayOpacity={0.80} showControls={false} />
+
+      {/* Ambient background glow */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(0,245,212,0.08)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.06)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="container relative z-10 mx-auto px-4 py-8 md:py-12">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center max-w-6xl mx-auto">
         {/* Left Column: Value Props */}
         <div className="space-y-8">
           <div>
-            <h1 className="font-serif text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl text-primary">
-              Book a Demo
+            <h1 className="font-serif text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl text-white">
+              Book a <span className="text-gradient-cyan">Demo</span>
             </h1>
-            <p className="mt-4 text-lg text-muted-foreground md:text-xl max-w-lg">
+            <p className="mt-4 text-lg text-[#7E97B8] md:text-xl max-w-lg leading-relaxed">
               See how LeaseIQ can transform your society operations. Our team will walk you through the platform and answer any questions.
             </p>
           </div>
 
           <div className="space-y-6">
             <div className="flex items-start gap-4">
-              <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold">
+              <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#00F5D4]/10 border border-[rgba(0,245,212,0.2)] text-[#00F5D4]">
                 <Clock className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="font-medium text-foreground">30-minute personalized walkthrough</h3>
-                <p className="text-muted-foreground mt-1 text-sm">Tailored to your society&apos;s exact flat count, wings, and gate layout.</p>
+                <h3 className="font-medium text-white">30-minute personalized walkthrough</h3>
+                <p className="text-[#7E97B8] mt-1 text-sm leading-relaxed">Tailored to your society&apos;s exact flat count, wings, and gate layout.</p>
               </div>
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold">
+              <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#00F5D4]/10 border border-[rgba(0,245,212,0.2)] text-[#00F5D4]">
                 <Users className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="font-medium text-foreground">Meet with our PropTech architects</h3>
-                <p className="text-muted-foreground mt-1 text-sm">Get direct guidance on historical Tally data migration and bank nodal feeds.</p>
+                <h3 className="font-medium text-white">Meet with our PropTech architects</h3>
+                <p className="text-[#7E97B8] mt-1 text-sm leading-relaxed">Get direct guidance on historical Tally data migration and bank nodal feeds.</p>
               </div>
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold">
+              <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#00F5D4]/10 border border-[rgba(0,245,212,0.2)] text-[#00F5D4]">
                 <CheckCircle className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="font-medium text-foreground">Complete committee presentation kit</h3>
-                <p className="text-muted-foreground mt-1 text-sm">Receive custom comparison slides for your upcoming AGM or committee review.</p>
+                <h3 className="font-medium text-white">Complete committee presentation kit</h3>
+                <p className="text-[#7E97B8] mt-1 text-sm leading-relaxed">Receive custom comparison slides for your upcoming AGM or committee review.</p>
               </div>
             </div>
           </div>
 
           {/* Visual Showcase Card with Floating Media Badges */}
-          <div className="relative rounded-3xl overflow-hidden border border-border/70 bg-card shadow-premium mt-8 group">
+          <div className="relative rounded-3xl overflow-hidden border border-[rgba(0,245,212,0.14)] bg-[#0A1B30]/80 shadow-2xl mt-8 group card-accent-line card-glow backdrop-blur-xl">
             <div className="relative h-56 w-full overflow-hidden">
               <div
                 className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
@@ -145,25 +149,25 @@ export default function BookDemoPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
               
               <div className="absolute bottom-4 left-5 right-5 text-white">
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-gold">Live Demonstration</span>
-                <h4 className="font-serif text-lg font-semibold">LeaseIQ Societies Command Center</h4>
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-[#00F5D4]">Live Demonstration</span>
+                <h4 className="font-serif text-lg font-semibold text-white">LeaseIQ Societies Command Center</h4>
                 <p className="text-xs text-white/70">450+ Active Housing Societies Across India</p>
               </div>
             </div>
 
             {/* Embedded Mini Stat Row */}
-            <div className="p-4 grid grid-cols-3 gap-2 text-center bg-surface border-t border-border/50 text-xs">
+            <div className="p-4 grid grid-cols-3 gap-2 text-center bg-[#061220] border-t border-[rgba(0,245,212,0.12)] text-xs">
               <div>
-                <p className="font-serif font-bold text-sm text-foreground">0.8s</p>
-                <p className="text-[10px] text-muted-foreground">ANPR Lift</p>
+                <p className="font-serif font-bold text-sm text-white">0.8s</p>
+                <p className="text-[10px] text-[#7E97B8]">ANPR Lift</p>
               </div>
               <div>
-                <p className="font-serif font-bold text-sm text-gold">98.8%</p>
-                <p className="text-[10px] text-muted-foreground">UPI Match</p>
+                <p className="font-serif font-bold text-sm text-[#00F5D4]">98.8%</p>
+                <p className="text-[10px] text-[#7E97B8]">UPI Match</p>
               </div>
               <div>
-                <p className="font-serif font-bold text-sm text-foreground">99.9%</p>
-                <p className="text-[10px] text-muted-foreground">Uptime SLA</p>
+                <p className="font-serif font-bold text-sm text-white">99.9%</p>
+                <p className="text-[10px] text-[#7E97B8]">Uptime SLA</p>
               </div>
             </div>
           </div>
@@ -171,37 +175,40 @@ export default function BookDemoPage() {
 
         {/* Right Column: Form */}
         <div>
-          <Card className="shadow-premium border-muted bg-card">
+          <Card className="shadow-2xl border border-[rgba(0,245,212,0.14)] bg-[#0A1B30]/80 backdrop-blur-xl rounded-3xl card-accent-line card-glow overflow-hidden">
             {isSuccess ? (
               <CardContent className="flex flex-col items-center justify-center space-y-6 py-16 text-center">
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-success/10">
-                  <CheckCircle className="h-10 w-10 text-success" />
+                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#00F5D4]/10 text-[#00F5D4] border border-[rgba(0,245,212,0.2)]">
+                  <CheckCircle className="h-10 w-10 text-[#00F5D4]" />
                 </div>
                 <div className="space-y-2">
-                  <h2 className="font-serif text-3xl font-bold">Demo Request Submitted!</h2>
-                  <p className="text-muted-foreground">
+                  <h2 className="font-serif text-3xl font-bold text-white">Demo Request Submitted!</h2>
+                  <p className="text-[#7E97B8]">
                     Thank you for your interest in LeaseIQ. Our team will reach out within 24 hours to schedule your demo.
                   </p>
                 </div>
-                <Button asChild className="mt-4" size="lg">
+                <Button asChild className="mt-4 bg-[#00F5D4] text-[#040D1A] hover:bg-[#00F5D4]/90 font-bold shadow-[0_0_15px_rgba(0,245,212,0.3)] rounded-full px-8" size="lg">
                   <Link href="/">Back to Home</Link>
                 </Button>
               </CardContent>
             ) : (
               <>
                 <CardHeader>
-                  <CardTitle className="text-2xl font-bold">Request your demo</CardTitle>
-                  <CardDescription>Fill out the form below and we&apos;ll be in touch shortly.</CardDescription>
+                  <CardTitle className="text-2xl font-bold text-white">Request your demo</CardTitle>
+                  <CardDescription className="text-[#7E97B8]">Fill out the form below and we&apos;ll be in touch shortly.</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div className="space-y-2">
-                        <Label htmlFor="name">Name</Label>
+                        <Label htmlFor="name" className="text-white text-sm font-medium">Name</Label>
                         <Input
                           id="name"
                           placeholder="Your Name"
-                          className={cn(errors.name && "border-destructive")}
+                          className={cn(
+                            "bg-[#061220] border-[rgba(0,245,212,0.2)] text-white placeholder:text-[#7E97B8] focus-visible:border-[#00F5D4]",
+                            errors.name && "border-destructive"
+                          )}
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         />
@@ -209,11 +216,14 @@ export default function BookDemoPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="societyName">Society / Community Name</Label>
+                        <Label htmlFor="societyName" className="text-white text-sm font-medium">Society / Community Name</Label>
                         <Input
                           id="societyName"
                           placeholder="Society Name"
-                          className={cn(errors.societyName && "border-destructive")}
+                          className={cn(
+                            "bg-[#061220] border-[rgba(0,245,212,0.2)] text-white placeholder:text-[#7E97B8] focus-visible:border-[#00F5D4]",
+                            errors.societyName && "border-destructive"
+                          )}
                           value={formData.societyName}
                           onChange={(e) => setFormData({ ...formData, societyName: e.target.value })}
                         />
@@ -223,12 +233,15 @@ export default function BookDemoPage() {
 
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
+                        <Label htmlFor="email" className="text-white text-sm font-medium">Email</Label>
                         <Input
                           id="email"
                           type="email"
                           placeholder="name@example.com"
-                          className={cn(errors.email && "border-destructive")}
+                          className={cn(
+                            "bg-[#061220] border-[rgba(0,245,212,0.2)] text-white placeholder:text-[#7E97B8] focus-visible:border-[#00F5D4]",
+                            errors.email && "border-destructive"
+                          )}
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         />
@@ -236,12 +249,15 @@ export default function BookDemoPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="phone">Phone</Label>
+                        <Label htmlFor="phone" className="text-white text-sm font-medium">Phone</Label>
                         <Input
                           id="phone"
                           type="tel"
                           placeholder="1234567890"
-                          className={cn(errors.phone && "border-destructive")}
+                          className={cn(
+                            "bg-[#061220] border-[rgba(0,245,212,0.2)] text-white placeholder:text-[#7E97B8] focus-visible:border-[#00F5D4]",
+                            errors.phone && "border-destructive"
+                          )}
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         />
@@ -251,31 +267,37 @@ export default function BookDemoPage() {
 
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div className="space-y-2">
-                        <Label htmlFor="units">Number of Units</Label>
+                        <Label htmlFor="units" className="text-white text-sm font-medium">Number of Units</Label>
                         <Select
                           value={formData.units}
                           onValueChange={(value) => setFormData({ ...formData, units: value ?? "" })}
                         >
-                          <SelectTrigger className={cn(errors.units && "border-destructive")}>
+                          <SelectTrigger className={cn(
+                            "w-full bg-[#061220] border-[rgba(0,245,212,0.2)] text-white focus-visible:border-[#00F5D4]",
+                            errors.units && "border-destructive"
+                          )}>
                             <SelectValue placeholder="Select size" />
                           </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="under-50">Under 50</SelectItem>
-                            <SelectItem value="50-100">50 - 100</SelectItem>
-                            <SelectItem value="100-300">100 - 300</SelectItem>
-                            <SelectItem value="300-500">300 - 500</SelectItem>
-                            <SelectItem value="500+">500+</SelectItem>
+                          <SelectContent className="bg-[#0A1B30] border border-[rgba(0,245,212,0.2)] text-white">
+                            <SelectItem value="under-50" className="focus:bg-[#00F5D4]/10 focus:text-[#00F5D4] text-white cursor-pointer">Under 50</SelectItem>
+                            <SelectItem value="50-100" className="focus:bg-[#00F5D4]/10 focus:text-[#00F5D4] text-white cursor-pointer">50 - 100</SelectItem>
+                            <SelectItem value="100-300" className="focus:bg-[#00F5D4]/10 focus:text-[#00F5D4] text-white cursor-pointer">100 - 300</SelectItem>
+                            <SelectItem value="300-500" className="focus:bg-[#00F5D4]/10 focus:text-[#00F5D4] text-white cursor-pointer">300 - 500</SelectItem>
+                            <SelectItem value="500+" className="focus:bg-[#00F5D4]/10 focus:text-[#00F5D4] text-white cursor-pointer">500+</SelectItem>
                           </SelectContent>
                         </Select>
                         {errors.units && <p className="text-sm text-destructive">{errors.units}</p>}
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="city">City</Label>
+                        <Label htmlFor="city" className="text-white text-sm font-medium">City</Label>
                         <Input
                           id="city"
                           placeholder="Your City"
-                          className={cn(errors.city && "border-destructive")}
+                          className={cn(
+                            "bg-[#061220] border-[rgba(0,245,212,0.2)] text-white placeholder:text-[#7E97B8] focus-visible:border-[#00F5D4]",
+                            errors.city && "border-destructive"
+                          )}
                           value={formData.city}
                           onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                         />
@@ -284,17 +306,17 @@ export default function BookDemoPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message">Message (Optional)</Label>
+                      <Label htmlFor="message" className="text-white text-sm font-medium">Message (Optional)</Label>
                       <Textarea
                         id="message"
                         placeholder="Tell us about any specific challenges you're facing..."
-                        className="min-h-[100px] resize-none"
+                        className="min-h-[100px] resize-none bg-[#061220] border-[rgba(0,245,212,0.2)] text-white placeholder:text-[#7E97B8] focus-visible:border-[#00F5D4]"
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       />
                     </div>
 
-                    <Button type="submit" className="w-full" size="lg" disabled={isLoading}>
+                    <Button type="submit" className="w-full bg-[#00F5D4] text-[#040D1A] hover:bg-[#00F5D4]/90 font-bold shadow-[0_0_15px_rgba(0,245,212,0.3)] h-11 rounded-xl" size="lg" disabled={isLoading}>
                       {isLoading ? (
                         <>
                           <Loader2 className="mr-2 h-4 w-4 animate-spin" />

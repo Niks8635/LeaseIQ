@@ -20,10 +20,7 @@ import {
   Wrench,
   TreePalm,
   MessageSquare,
-  Moon,
-  Sun,
 } from "lucide-react";
-import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -124,15 +121,23 @@ const mainNav = [
 
 function LeaseIQLogo({ className }: { className?: string }) {
   return (
-    <Link href="/" className={cn("flex items-baseline gap-0.5 group", className)}>
-      <span className="text-xl font-bold tracking-tight text-foreground transition-colors">
-        Lease
-      </span>
-      <span className="text-xl font-bold tracking-tight text-gold transition-colors">
-        IQ
-      </span>
-      <span className="ml-1.5 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-muted-foreground hidden sm:inline">
-        Societies
+    <Link href="/" className={cn("flex items-center gap-2 group", className)}>
+      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#00F5D4] to-[#3B82F6] p-[1px] shadow-[0_0_15px_rgba(0,245,212,0.25)]">
+        <div className="flex h-full w-full items-center justify-center rounded-[7px] bg-[#040D1A]">
+          <span className="font-mono text-xs font-bold text-[#00F5D4]">LQ</span>
+        </div>
+      </div>
+      <div className="flex items-baseline gap-0.5">
+        <span className="text-xl font-bold tracking-tight text-white transition-colors">
+          Lease
+        </span>
+        <span className="text-xl font-bold tracking-tight text-gradient-cyan transition-colors">
+          IQ
+        </span>
+      </div>
+      <span className="ml-1 rounded-full border border-[rgba(0,245,212,0.3)] bg-[rgba(0,245,212,0.08)] px-1.5 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-widest text-[#00F5D4] hidden sm:inline-flex items-center gap-1">
+        <span className="h-1 w-1 rounded-full bg-[#00F5D4] animate-pulse" />
+        AI
       </span>
     </Link>
   );
@@ -163,9 +168,9 @@ function NavDropdown({
       <button
         onClick={onToggle}
         className={cn(
-          "flex items-center gap-1 text-sm font-medium transition-colors",
-          "text-muted-foreground hover:text-foreground",
-          isOpen && "text-foreground"
+          "flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium transition-colors rounded-lg",
+          "text-[#7E97B8] hover:text-white hover:bg-[rgba(0,245,212,0.05)]",
+          isOpen && "text-[#00F5D4] bg-[rgba(0,245,212,0.08)]"
         )}
         aria-expanded={isOpen}
       >
@@ -173,7 +178,7 @@ function NavDropdown({
         <ChevronDown
           className={cn(
             "h-3.5 w-3.5 transition-transform duration-200",
-            isOpen && "rotate-180"
+            isOpen ? "rotate-180 text-[#00F5D4]" : "text-[#7E97B8]"
           )}
         />
       </button>
@@ -185,25 +190,25 @@ function NavDropdown({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.98 }}
             transition={{ duration: 0.15, ease: "easeOut" }}
-            className="absolute left-1/2 top-full z-50 mt-3 w-[420px] -translate-x-1/2"
+            className="absolute left-1/2 top-full z-50 mt-3 w-[440px] -translate-x-1/2"
           >
-            <div className="rounded-xl border border-border bg-popover p-2 shadow-premium">
-              <div className="grid gap-0.5">
+            <div className="rounded-2xl border border-[rgba(0,245,212,0.18)] bg-[#0A1B30]/95 p-2.5 shadow-2xl shadow-black/80 backdrop-blur-2xl">
+              <div className="grid gap-1">
                 {items.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="group flex items-start gap-3 rounded-lg p-3 transition-colors hover:bg-accent"
+                    className="group flex items-start gap-3 rounded-xl p-3 transition-all hover:bg-[rgba(0,245,212,0.06)]"
                     onClick={onToggle}
                   >
-                    <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-border bg-background transition-colors group-hover:border-gold/30 group-hover:bg-gold/5">
-                      <item.icon className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-gold" />
+                    <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[rgba(0,245,212,0.15)] bg-[#0D223E] transition-all group-hover:border-[#00F5D4] group-hover:bg-[#00F5D4]/10 group-hover:shadow-[0_0_12px_rgba(0,245,212,0.25)]">
+                      <item.icon className="h-4 w-4 text-[#7E97B8] transition-colors group-hover:text-[#00F5D4]" />
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-foreground">
+                      <div className="text-sm font-semibold text-white group-hover:text-[#00F5D4] transition-colors">
                         {item.title}
                       </div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-xs text-[#7E97B8] mt-0.5 leading-relaxed">
                         {item.description}
                       </div>
                     </div>
@@ -218,29 +223,6 @@ function NavDropdown({
   );
 }
 
-/* ─── Theme Toggle ─── */
-
-function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return <div className="h-9 w-9" />;
-
-  return (
-    <button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-      aria-label="Toggle theme"
-    >
-      {theme === "dark" ? (
-        <Sun className="h-4 w-4" />
-      ) : (
-        <Moon className="h-4 w-4" />
-      )}
-    </button>
-  );
-}
 
 /* ─── Main Navbar ─── */
 
@@ -277,7 +259,7 @@ export function Navbar() {
         className={cn(
           "fixed top-0 z-50 w-full transition-all duration-300",
           scrolled
-            ? "border-b border-border/50 bg-background/80 backdrop-blur-xl"
+            ? "border-b border-[rgba(0,245,212,0.12)] bg-[#040D1A]/85 backdrop-blur-2xl shadow-xl shadow-black/40"
             : "bg-transparent"
         )}
       >
@@ -300,7 +282,7 @@ export function Navbar() {
                 )
               }
             />
-            <div className="mx-2" />
+            <div className="mx-1" />
             <NavDropdown
               label="Features"
               items={features}
@@ -311,16 +293,16 @@ export function Navbar() {
                 )
               }
             />
-            <div className="mx-2" />
+            <div className="mx-1" />
             {mainNav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "px-3 py-2 text-sm font-medium transition-colors",
+                  "px-3 py-1.5 text-sm font-medium transition-colors rounded-lg",
                   pathname === item.href
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-[#00F5D4] bg-[rgba(0,245,212,0.08)] font-semibold"
+                    : "text-[#7E97B8] hover:text-white hover:bg-[rgba(0,245,212,0.05)]"
                 )}
               >
                 {item.title}
@@ -330,12 +312,20 @@ export function Navbar() {
 
           {/* Desktop Actions */}
           <div className="hidden items-center gap-3 lg:flex">
-            <ThemeToggle />
-            <Button variant="ghost" size="sm" asChild>
+            <Button
+              variant="ghost"
+              size="sm"
+              asChild
+              className="text-[#E2EBF7] hover:text-[#00F5D4] hover:bg-[rgba(0,245,212,0.08)]"
+            >
               <Link href="/login">Log in</Link>
             </Button>
-            <Button size="sm" asChild className="gap-1.5">
-              <Link href="/book-demo">
+            <Button
+              size="sm"
+              asChild
+              className="btn-cyan rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider"
+            >
+              <Link href="/book-demo" className="flex items-center gap-1.5">
                 Book a Demo
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
@@ -344,10 +334,9 @@ export function Navbar() {
 
           {/* Mobile Toggle */}
           <div className="flex items-center gap-2 lg:hidden">
-            <ThemeToggle />
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="flex h-9 w-9 items-center justify-center rounded-md text-foreground"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-[rgba(0,245,212,0.2)] bg-[#0A1B30] text-white hover:text-[#00F5D4]"
               aria-label="Toggle menu"
             >
               {mobileOpen ? (
@@ -368,12 +357,12 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-16 z-40 border-b border-border bg-background/95 backdrop-blur-xl lg:hidden"
+            className="fixed inset-x-0 top-16 z-40 border-b border-[rgba(0,245,212,0.15)] bg-[#040D1A]/95 backdrop-blur-2xl lg:hidden"
           >
             <div className="container-wide max-h-[calc(100vh-4rem)] overflow-y-auto py-6">
               {/* Solutions */}
               <div className="mb-4">
-                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#00F5D4]">
                   Solutions
                 </p>
                 <div className="grid gap-1">
@@ -381,10 +370,10 @@ export function Navbar() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-foreground transition-colors hover:bg-accent"
+                      className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-[#E2EBF7] transition-colors hover:bg-[rgba(0,245,212,0.08)] hover:text-[#00F5D4]"
                       onClick={() => setMobileOpen(false)}
                     >
-                      <item.icon className="h-4 w-4 text-muted-foreground" />
+                      <item.icon className="h-4 w-4 text-[#00F5D4]" />
                       {item.title}
                     </Link>
                   ))}
@@ -393,7 +382,7 @@ export function Navbar() {
 
               {/* Features */}
               <div className="mb-4">
-                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#00F5D4]">
                   Features
                 </p>
                 <div className="grid gap-1">
@@ -401,10 +390,10 @@ export function Navbar() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-foreground transition-colors hover:bg-accent"
+                      className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-[#E2EBF7] transition-colors hover:bg-[rgba(0,245,212,0.08)] hover:text-[#00F5D4]"
                       onClick={() => setMobileOpen(false)}
                     >
-                      <item.icon className="h-4 w-4 text-muted-foreground" />
+                      <item.icon className="h-4 w-4 text-[#00F5D4]" />
                       {item.title}
                     </Link>
                   ))}
@@ -412,12 +401,12 @@ export function Navbar() {
               </div>
 
               {/* Main Links */}
-              <div className="mb-6 border-t border-border pt-4">
+              <div className="mb-6 border-t border-[rgba(0,245,212,0.12)] pt-4">
                 {mainNav.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="block rounded-lg px-3 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+                    className="block rounded-lg px-3 py-2.5 text-sm font-medium text-[#E2EBF7] transition-colors hover:bg-[rgba(0,245,212,0.08)] hover:text-[#00F5D4]"
                     onClick={() => setMobileOpen(false)}
                   >
                     {item.title}
@@ -426,12 +415,12 @@ export function Navbar() {
               </div>
 
               {/* Mobile CTAs */}
-              <div className="flex flex-col gap-2">
-                <Button variant="outline" asChild className="w-full">
+              <div className="flex flex-col gap-2.5">
+                <Button variant="outline" asChild className="w-full btn-ghost-cyan">
                   <Link href="/login">Log in</Link>
                 </Button>
-                <Button asChild className="w-full gap-1.5">
-                  <Link href="/book-demo">
+                <Button asChild className="w-full btn-cyan font-bold">
+                  <Link href="/book-demo" className="flex items-center justify-center gap-1.5">
                     Book a Demo
                     <ArrowRight className="h-3.5 w-3.5" />
                   </Link>

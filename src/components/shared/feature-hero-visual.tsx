@@ -63,7 +63,7 @@ export function FeatureHeroVisual({
   return (
     <div className={cn("relative [perspective:1200px]", className)}>
       {/* Ambient background glow */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-gold/20 via-gold/5 to-transparent rounded-3xl blur-3xl -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-[#00F5D4]/15 via-[#00F5D4]/5 to-transparent rounded-3xl blur-3xl -z-10" />
 
       {/* Master 3D Visual Card */}
       <motion.div
@@ -80,24 +80,24 @@ export function FeatureHeroVisual({
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="rounded-3xl border border-border/80 bg-card shadow-2xl overflow-hidden relative min-h-[440px] md:min-h-[520px] flex flex-col justify-between"
+        className="rounded-3xl border border-[rgba(0,245,212,0.18)] bg-[#0A1B30]/80 shadow-2xl overflow-hidden relative min-h-[440px] md:min-h-[520px] flex flex-col justify-between backdrop-blur-xl"
       >
         {/* Photo Background with Luxury Dark Gradient */}
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
           style={{ backgroundImage: `url(${imageUrl})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#040D1A]/95 via-black/40 to-black/30" />
 
         {/* Top Header Overlay Bar */}
         <div className="relative z-10 p-5 sm:p-6 flex items-center justify-between">
-          <Badge className="bg-black/60 backdrop-blur-md text-gold border border-gold/30 text-xs px-3 py-1 font-semibold">
-            <Sparkles className="w-3 h-3 mr-1 text-gold" />
+          <Badge className="bg-[#040D1A]/80 backdrop-blur-md text-[#00F5D4] border border-[rgba(0,245,212,0.3)] text-xs px-3 py-1 font-semibold">
+            <Sparkles className="w-3 h-3 mr-1 text-[#00F5D4]" />
             {badge}
           </Badge>
 
-          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[11px] text-white">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#040D1A]/80 backdrop-blur-md border border-[rgba(0,245,212,0.15)] text-[11px] text-white">
+            <span className="w-2 h-2 rounded-full bg-[#00F5D4] animate-pulse" />
             <span>{statusText}</span>
           </div>
         </div>
@@ -106,7 +106,7 @@ export function FeatureHeroVisual({
         <div className="relative z-10 p-6 sm:p-8 space-y-4 text-white">
           <div className="flex items-center gap-3">
             {Icon && (
-              <div className="w-10 h-10 rounded-xl bg-gold text-black flex items-center justify-center shrink-0 shadow">
+              <div className="w-10 h-10 rounded-xl bg-[#00F5D4] text-[#040D1A] flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(0,245,212,0.3)]">
                 <Icon className="w-5 h-5" />
               </div>
             )}

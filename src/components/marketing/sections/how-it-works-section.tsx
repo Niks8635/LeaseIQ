@@ -118,9 +118,12 @@ export function HowItWorksSection() {
   const activeStep = STEPS[activeStepIndex];
 
   return (
-    <section className="w-full section-padding bg-[#FAFAF8] py-24 sm:py-32 relative overflow-hidden" id="how-it-works">
-      {/* Ambient Looping Minimalist Architectural Courtyard Video & Poster */}
-      <AmbientVideoBg preset="courtyard" variant="light" overlayOpacity={0.62} showControls={false} />
+    <section className="w-full section-padding bg-[#040D1A] py-24 sm:py-32 relative overflow-hidden border-b border-[rgba(0,245,212,0.1)]" id="how-it-works">
+      {/* Ambient Looping Video & Poster */}
+      <AmbientVideoBg preset="nightscape" variant="dark" overlayOpacity={0.75} showControls={false} />
+
+      {/* Ambient background glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#00F5D4]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container-wide relative z-10">
         <SectionHeading
@@ -143,25 +146,25 @@ export function HowItWorksSection() {
                   key={s.step}
                   onClick={() => setActiveStepIndex(idx)}
                   className={cn(
-                    "p-4 sm:p-5 rounded-2xl text-left transition-all border relative flex flex-col justify-between min-h-[130px] group",
+                    "p-4 sm:p-5 rounded-2xl text-left transition-all border relative flex flex-col justify-between min-h-[130px] group backdrop-blur-md",
                     isActive
-                      ? "bg-white border-gold shadow-premium ring-1 ring-gold"
-                      : "bg-white/60 border-border/60 hover:bg-white hover:border-gold/30"
+                      ? "bg-[#0A1B30] border-[#00F5D4] shadow-[0_0_20px_rgba(0,245,212,0.15)] ring-1 ring-[#00F5D4]"
+                      : "bg-[#0A1B30]/50 border-[rgba(0,245,212,0.12)] hover:bg-[#0A1B30] hover:border-[rgba(0,245,212,0.3)]"
                   )}
                 >
                   <div className="flex items-center justify-between w-full mb-3">
                     <span
                       className={cn(
                         "text-xs font-mono font-bold px-2 py-0.5 rounded",
-                        isActive ? "bg-gold text-black" : "bg-muted text-muted-foreground"
+                        isActive ? "bg-[#00F5D4] text-[#040D1A]" : "bg-[#0D223E] text-[#7E97B8]"
                       )}
                     >
                       Step {s.step}
                     </span>
-                    <Icon className={cn("w-4 h-4", isActive ? "text-gold" : "text-muted-foreground group-hover:text-foreground")} />
+                    <Icon className={cn("w-4 h-4", isActive ? "text-[#00F5D4]" : "text-[#7E97B8] group-hover:text-white")} />
                   </div>
                   <div>
-                    <p className={cn("text-xs font-semibold leading-snug", isActive ? "text-foreground" : "text-muted-foreground")}>
+                    <p className={cn("text-xs font-semibold leading-snug", isActive ? "text-white" : "text-[#7E97B8]")}>
                       {s.title}
                     </p>
                   </div>
@@ -171,7 +174,7 @@ export function HowItWorksSection() {
           </div>
 
           {/* Active Step Details & Interactive Showcase */}
-          <div className="mt-8 bg-white rounded-3xl border border-border/80 shadow-premium p-6 sm:p-10">
+          <div className="mt-8 bg-[#0A1B30]/80 rounded-3xl border border-[rgba(0,245,212,0.16)] shadow-2xl p-6 sm:p-10 backdrop-blur-xl card-accent-line">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeStep.step}
@@ -184,26 +187,26 @@ export function HowItWorksSection() {
                 {/* Left: Step Description */}
                 <div className="space-y-6">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono font-bold text-gold uppercase tracking-wider">
+                    <span className="text-xs font-mono font-bold text-[#00F5D4] uppercase tracking-wider">
                       Phase 0{activeStepIndex + 1}
                     </span>
-                    <Badge className="bg-gold/15 text-gold border-none text-xs">
+                    <Badge className="bg-[#00F5D4]/15 text-[#00F5D4] border border-[#00F5D4]/30 text-xs">
                       {activeStep.badge}
                     </Badge>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-serif font-medium text-foreground">
+                  <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
                     {activeStep.headline}
                   </h3>
 
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-[#7E97B8] text-sm leading-relaxed">
                     {activeStep.description}
                   </p>
 
                   <div className="space-y-3 pt-2">
                     {activeStep.features.map((feat, i) => (
-                      <div key={i} className="flex items-center gap-2.5 text-xs text-foreground">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <div key={i} className="flex items-center gap-2.5 text-xs text-[#E2EBF7]">
+                        <CheckCircle2 className="w-4 h-4 text-[#00F5D4] shrink-0" />
                         <span>{feat}</span>
                       </div>
                     ))}
@@ -214,12 +217,12 @@ export function HowItWorksSection() {
                       <Button
                         size="sm"
                         onClick={() => setActiveStepIndex((prev) => prev + 1)}
-                        className="bg-foreground text-background hover:bg-black/80"
+                        className="btn-cyan rounded-full px-5 font-bold"
                       >
                         Next Step <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
                       </Button>
                     ) : (
-                      <Button asChild size="sm" className="bg-gold text-black hover:bg-gold/90 font-semibold">
+                      <Button asChild size="sm" className="btn-cyan rounded-full px-5 font-bold">
                         <a href="/book-demo">
                           Start 48-Hour Setup <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
                         </a>
@@ -229,23 +232,23 @@ export function HowItWorksSection() {
                 </div>
 
                 {/* Right: Realistic UI Visual Card for this Step */}
-                <div className="bg-surface rounded-2xl border border-border/80 p-6 sm:p-8 space-y-5 shadow-sm">
-                  <div className="flex items-center justify-between pb-3 border-b border-border/60">
-                    <span className="text-xs font-semibold text-foreground">{activeStep.preview.tag}</span>
-                    <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                <div className="bg-[#061220] rounded-2xl border border-[rgba(0,245,212,0.15)] p-6 sm:p-8 space-y-5 shadow-lg">
+                  <div className="flex items-center justify-between pb-3 border-b border-[rgba(0,245,212,0.12)]">
+                    <span className="text-xs font-semibold text-white">{activeStep.preview.tag}</span>
+                    <span className="flex h-2 w-2 rounded-full bg-[#00F5D4] animate-pulse" />
                   </div>
 
                   <div className="space-y-3">
                     {activeStep.preview.items.map((item, i) => (
-                      <div key={i} className="p-3.5 rounded-xl bg-white border border-border/60 flex items-center justify-between text-xs">
-                        <span className="text-muted-foreground">{item.label}</span>
-                        <span className="font-semibold text-foreground font-mono">{item.val}</span>
+                      <div key={i} className="p-3.5 rounded-xl bg-[#0A1B30] border border-[rgba(0,245,212,0.12)] flex items-center justify-between text-xs">
+                        <span className="text-[#7E97B8]">{item.label}</span>
+                        <span className="font-semibold text-white font-mono">{item.val}</span>
                       </div>
                     ))}
                   </div>
 
-                  <div className="p-3 rounded-xl bg-gold/10 border border-gold/20 flex items-center gap-2.5 text-xs text-gold">
-                    <Sparkles className="w-4 h-4 shrink-0 text-gold" />
+                  <div className="p-3 rounded-xl bg-[#00F5D4]/10 border border-[#00F5D4]/25 flex items-center gap-2.5 text-xs text-[#00F5D4]">
+                    <Sparkles className="w-4 h-4 shrink-0 text-[#00F5D4]" />
                     <span>LeaseIQ Dedicated Implementation Specialist Assigned</span>
                   </div>
                 </div>

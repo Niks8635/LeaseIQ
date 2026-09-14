@@ -109,7 +109,10 @@ export function BeforeAfterSection() {
   const current = COMPARISONS[activeTab];
 
   return (
-    <section className="w-full section-padding bg-background py-24 sm:py-32 relative overflow-hidden border-b border-border/40" id="before-after">
+    <section className="w-full section-padding bg-[#040D1A] py-24 sm:py-32 relative overflow-hidden border-b border-[rgba(0,245,212,0.1)]" id="before-after">
+      {/* Ambient background glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#00F5D4]/5 rounded-full blur-[130px] pointer-events-none" />
+
       <div className="container-wide relative z-10">
         <SectionHeading
           label="THE LEASEIQ DIFFERENCE"
@@ -121,14 +124,14 @@ export function BeforeAfterSection() {
 
         {/* View Mode Toggle */}
         <div className="flex justify-center items-center gap-3 mt-10">
-          <div className="inline-flex p-1 bg-surface border border-border/80 rounded-full text-xs">
+          <div className="inline-flex p-1 bg-[#061220] border border-[rgba(0,245,212,0.15)] rounded-full text-xs">
             <button
               onClick={() => setViewMode("interactive")}
               className={cn(
                 "px-4 py-1.5 rounded-full font-medium transition-all",
                 viewMode === "interactive"
-                  ? "bg-foreground text-background shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-[#00F5D4] text-[#040D1A] font-bold shadow-md shadow-[#00F5D4]/20"
+                  : "text-[#7E97B8] hover:text-white"
               )}
             >
               Interactive Focus View
@@ -138,8 +141,8 @@ export function BeforeAfterSection() {
               className={cn(
                 "px-4 py-1.5 rounded-full font-medium transition-all",
                 viewMode === "grid"
-                  ? "bg-foreground text-background shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-[#00F5D4] text-[#040D1A] font-bold shadow-md shadow-[#00F5D4]/20"
+                  : "text-[#7E97B8] hover:text-white"
               )}
             >
               Side-by-Side Matrix
@@ -159,8 +162,8 @@ export function BeforeAfterSection() {
                   className={cn(
                     "px-4 py-2 rounded-full text-xs font-semibold transition-all whitespace-nowrap border",
                     activeTab === idx
-                      ? "bg-gold text-black border-gold shadow-sm scale-105"
-                      : "bg-surface text-muted-foreground hover:text-foreground border-border/80"
+                      ? "bg-[#00F5D4] text-[#040D1A] border-[#00F5D4] shadow-[0_0_15px_rgba(0,245,212,0.25)] font-bold scale-105"
+                      : "bg-[#0A1B30] text-[#7E97B8] hover:text-white hover:bg-[rgba(0,245,212,0.06)] border-[rgba(0,245,212,0.12)]"
                   )}
                 >
                   {item.domain}
@@ -170,71 +173,71 @@ export function BeforeAfterSection() {
 
             {/* Split Comparison Cards */}
             <div className="mt-8 grid md:grid-cols-2 gap-6 items-stretch">
-              {/* The Old Way (Red/Muted Accent) */}
+              {/* The Old Way (Red Accent) */}
               <motion.div
                 key={`before-${activeTab}`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}
-                className="rounded-3xl border border-red-500/20 bg-red-50/30 dark:bg-red-950/10 p-6 sm:p-8 flex flex-col justify-between"
+                className="rounded-3xl border border-red-500/20 bg-red-950/20 p-6 sm:p-8 flex flex-col justify-between backdrop-blur-xl"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-xs font-bold uppercase tracking-wider">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/15 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider">
                       <XCircle className="w-3.5 h-3.5" /> The Legacy Manual Way
                     </span>
-                    <span className="text-xs font-mono font-bold text-red-600 dark:text-red-400">
+                    <span className="text-xs font-mono font-bold text-red-400">
                       {current.before.metric}
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-foreground mb-3">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-white mb-3">
                     {current.before.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                  <p className="text-sm text-[#7E97B8] leading-relaxed mb-6">
                     {current.before.description}
                   </p>
                 </div>
 
                 <div className="pt-4 border-t border-red-500/15">
-                  <p className="text-xs font-semibold text-red-700 dark:text-red-400 flex items-center gap-1.5">
+                  <p className="text-xs font-semibold text-red-400 flex items-center gap-1.5">
                     <ShieldAlert className="w-4 h-4 shrink-0" />
                     <span>Impact: {current.before.painPoint}</span>
                   </p>
                 </div>
               </motion.div>
 
-              {/* The LeaseIQ Way (Gold/Emerald Accent) */}
+              {/* The LeaseIQ Way (Cyan/Emerald Accent) */}
               <motion.div
                 key={`after-${activeTab}`}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}
-                className="rounded-3xl border border-gold/40 bg-gold/5 dark:bg-gold/10 p-6 sm:p-8 flex flex-col justify-between shadow-premium relative overflow-hidden"
+                className="rounded-3xl border border-[rgba(0,245,212,0.3)] bg-[#0A1B30]/90 p-6 sm:p-8 flex flex-col justify-between shadow-2xl backdrop-blur-xl card-accent-line relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-2xl" />
+                <div className="absolute top-0 right-0 w-40 h-40 bg-[#00F5D4]/10 rounded-full blur-2xl pointer-events-none" />
 
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-6">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00F5D4]/15 border border-[#00F5D4]/35 text-[#00F5D4] text-xs font-bold uppercase tracking-wider">
                       <CheckCircle2 className="w-3.5 h-3.5" /> The LeaseIQ Way
                     </span>
-                    <span className="text-xs font-mono font-bold text-gold">
+                    <span className="text-xs font-mono font-bold text-[#00F5D4]">
                       {current.after.metric}
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-foreground mb-3">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-white mb-3">
                     {current.after.title}
                   </h3>
-                  <p className="text-sm text-foreground/80 leading-relaxed mb-6">
+                  <p className="text-sm text-[#E2EBF7]/90 leading-relaxed mb-6">
                     {current.after.description}
                   </p>
                 </div>
 
-                <div className="relative z-10 pt-4 border-t border-gold/20">
-                  <p className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 flex items-center gap-1.5">
-                    <ShieldCheck className="w-4 h-4 shrink-0 text-emerald-600" />
+                <div className="relative z-10 pt-4 border-t border-[rgba(0,245,212,0.15)]">
+                  <p className="text-xs font-semibold text-[#00F5D4] flex items-center gap-1.5">
+                    <ShieldCheck className="w-4 h-4 shrink-0 text-[#00F5D4]" />
                     <span>Outcome: {current.after.solution}</span>
                   </p>
                 </div>
@@ -249,30 +252,30 @@ export function BeforeAfterSection() {
             {COMPARISONS.map((comp, idx) => (
               <div
                 key={idx}
-                className="grid md:grid-cols-2 gap-4 p-6 rounded-3xl bg-surface border border-border/80 shadow-sm hover:border-gold/30 transition-all"
+                className="grid md:grid-cols-2 gap-4 p-6 rounded-3xl bg-[#0A1B30] border border-[rgba(0,245,212,0.14)] shadow-xl hover:border-[rgba(0,245,212,0.35)] transition-all card-accent-line"
               >
                 {/* Before Column */}
-                <div className="space-y-2 pr-0 md:pr-4 md:border-r border-border/60">
+                <div className="space-y-2 pr-0 md:pr-4 md:border-r border-[rgba(0,245,212,0.1)]">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-red-600 flex items-center gap-1">
+                    <span className="text-xs font-bold text-red-400 flex items-center gap-1">
                       <XCircle className="w-3.5 h-3.5" /> Before LeaseIQ ({comp.domain})
                     </span>
-                    <span className="text-[11px] font-mono text-muted-foreground">{comp.before.metric}</span>
+                    <span className="text-[11px] font-mono text-[#7E97B8]">{comp.before.metric}</span>
                   </div>
-                  <h4 className="font-semibold text-sm text-foreground">{comp.before.title}</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{comp.before.description}</p>
+                  <h4 className="font-semibold text-sm text-white">{comp.before.title}</h4>
+                  <p className="text-xs text-[#7E97B8] leading-relaxed">{comp.before.description}</p>
                 </div>
 
                 {/* After Column */}
-                <div className="space-y-2 pl-0 md:pl-4 pt-4 md:pt-0 border-t md:border-t-0 border-border/60">
+                <div className="space-y-2 pl-0 md:pl-4 pt-4 md:pt-0 border-t md:border-t-0 border-[rgba(0,245,212,0.1)]">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-emerald-600 flex items-center gap-1">
+                    <span className="text-xs font-bold text-[#00F5D4] flex items-center gap-1">
                       <CheckCircle2 className="w-3.5 h-3.5" /> The LeaseIQ Advantage
                     </span>
-                    <span className="text-[11px] font-mono font-bold text-gold">{comp.after.metric}</span>
+                    <span className="text-[11px] font-mono font-bold text-[#00F5D4]">{comp.after.metric}</span>
                   </div>
-                  <h4 className="font-semibold text-sm text-foreground">{comp.after.title}</h4>
-                  <p className="text-xs text-foreground/80 leading-relaxed">{comp.after.description}</p>
+                  <h4 className="font-semibold text-sm text-white">{comp.after.title}</h4>
+                  <p className="text-xs text-[#E2EBF7]/90 leading-relaxed">{comp.after.description}</p>
                 </div>
               </div>
             ))}
@@ -281,11 +284,11 @@ export function BeforeAfterSection() {
 
         {/* Bottom Switchboard CTA */}
         <div className="mt-14 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-4 rounded-2xl bg-surface border border-border/80 max-w-xl mx-auto shadow-sm">
-            <span className="text-xs font-medium text-foreground">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-4 rounded-2xl bg-[#061220] border border-[rgba(0,245,212,0.18)] max-w-xl mx-auto shadow-xl">
+            <span className="text-xs font-medium text-[#E2EBF7]">
               Ready to transition your society from manual registers to LeaseIQ?
             </span>
-            <Button asChild size="sm" className="bg-gold text-black hover:bg-gold/90 font-semibold shrink-0">
+            <Button asChild size="sm" className="btn-cyan rounded-full px-5 font-bold shrink-0">
               <a href="/book-demo">
                 Book Society Migration <ArrowRight className="w-3.5 h-3.5 ml-1" />
               </a>

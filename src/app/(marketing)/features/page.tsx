@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import {
   ArrowRight,
   Building,
@@ -90,23 +89,24 @@ const features = [
 
 export default function FeaturesPage() {
   return (
-    <div className="min-h-screen bg-background pt-24 pb-20 relative overflow-hidden">
-      {/* Ambient Looping PropTech Cloud Video & High-Resolution Background Image */}
-      <AmbientVideoBg preset="technology" variant="light" overlayOpacity={0.62} showControls={false} />
+    <div className="min-h-screen bg-[#040D1A] pt-24 pb-20 relative overflow-hidden text-white">
+      {/* Ambient Video Background */}
+      <AmbientVideoBg preset="technology" variant="dark" overlayOpacity={0.80} showControls={false} />
 
       {/* Ambient background glow */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(0,245,212,0.08)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.06)_0%,transparent_70%)] pointer-events-none" />
 
-      <section className="section-padding container-wide text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-semibold uppercase tracking-widest mb-6">
+      <section className="section-padding container-wide text-center relative z-10">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00F5D4]/10 border border-[#00F5D4]/25 text-[#00F5D4] text-xs font-semibold uppercase tracking-widest mb-6">
           <Sparkles className="w-3.5 h-3.5" />
           <span>Complete PropTech Suite</span>
         </div>
-        <h1 className="font-serif text-5xl md:text-6xl font-semibold tracking-tight text-foreground mb-6">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-6">
           Everything your society needs. <br />
-          <span className="text-gradient-gold">One intelligent platform.</span>
+          <span className="text-gradient-cyan">One intelligent platform.</span>
         </h1>
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-16 leading-relaxed">
+        <p className="text-base sm:text-lg md:text-xl text-[#7E97B8] max-w-2xl mx-auto mb-16 leading-relaxed">
           Discover a suite of 8 specialized modules designed to bring harmony, financial transparency, and sub-second security to your gated community.
         </p>
 
@@ -114,37 +114,37 @@ export default function FeaturesPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-left max-w-6xl mx-auto">
           {features.map((feature, i) => (
             <Link key={i} href={feature.href} className="group">
-              <Card className="h-full bg-card shadow-sm hover:shadow-premium border-border/80 hover:border-gold/50 transition-all duration-300 rounded-3xl overflow-hidden flex flex-col justify-between">
+              <Card className="h-full bg-[#0A1B30]/80 shadow-2xl border-[rgba(0,245,212,0.14)] hover:border-[rgba(0,245,212,0.45)] transition-all duration-300 rounded-3xl overflow-hidden flex flex-col justify-between card-accent-line card-glow backdrop-blur-xl">
                 {/* Photo Thumbnail */}
-                <div className="relative h-36 w-full overflow-hidden bg-muted">
+                <div className="relative h-36 w-full overflow-hidden bg-[#061220]">
                   <div
                     className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                     style={{ backgroundImage: `url(${feature.image})` }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1B30] via-black/30 to-transparent" />
                   
                   <div className="absolute top-3 left-3 z-10">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-black/60 text-gold border border-gold/30 backdrop-blur-md">
+                    <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-[#040D1A]/80 text-[#00F5D4] border border-[#00F5D4]/30 backdrop-blur-md">
                       {feature.badge}
                     </span>
                   </div>
 
-                  <div className="absolute bottom-3 left-3 z-10 w-9 h-9 rounded-xl bg-white/90 backdrop-blur-md flex items-center justify-center text-foreground shadow">
-                    <feature.icon className="w-4 h-4 text-gold" />
+                  <div className="absolute bottom-3 left-3 z-10 w-9 h-9 rounded-xl bg-[#00F5D4]/15 border border-[#00F5D4]/25 backdrop-blur-md flex items-center justify-center shadow">
+                    <feature.icon className="w-4 h-4 text-[#00F5D4]" />
                   </div>
                 </div>
 
                 <CardHeader className="p-5 pb-2">
-                  <CardTitle className="text-lg font-semibold text-foreground group-hover:text-gold transition-colors">
+                  <CardTitle className="text-lg font-semibold text-white group-hover:text-[#00F5D4] transition-colors">
                     {feature.title}
                   </CardTitle>
-                  <CardDescription className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                  <CardDescription className="text-xs text-[#7E97B8] mt-1 leading-relaxed">
                     {feature.desc}
                   </CardDescription>
                 </CardHeader>
 
                 <CardContent className="p-5 pt-0">
-                  <div className="flex items-center text-xs text-gold font-semibold pt-3 border-t border-border/50 group-hover:gap-2 transition-all">
+                  <div className="flex items-center text-xs text-[#00F5D4] font-semibold pt-3 border-t border-[rgba(0,245,212,0.12)] group-hover:gap-2 transition-all">
                     Explore module <ArrowRight className="w-3.5 h-3.5 ml-1" />
                   </div>
                 </CardContent>

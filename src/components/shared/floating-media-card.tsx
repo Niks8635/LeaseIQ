@@ -62,25 +62,25 @@ export function FloatingMediaCard({
             style={{ backgroundImage: `url(${card.imageUrl})` }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-          <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-background" />
+          <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#00F5D4] ring-2 ring-[#040D1A]" />
         </div>
 
         {/* Content */}
         <div className="min-w-0 flex-1">
           <div className="flex items-center justify-between gap-1 mb-0.5">
-            <span className="text-[10px] font-semibold text-gold uppercase tracking-wider truncate">
+            <span className="text-[10px] font-semibold text-[#00F5D4] uppercase tracking-wider truncate">
               {card.badge}
             </span>
             {card.metric && (
-              <span className="text-[10px] font-mono font-bold text-foreground bg-surface px-1.5 py-0.2 rounded border border-border/60 shrink-0">
+              <span className="text-[10px] font-mono font-bold text-white bg-[#061220] px-1.5 py-0.2 rounded border border-[rgba(0,245,212,0.14)] shrink-0">
                 {card.metric}
               </span>
             )}
           </div>
-          <p className="text-xs font-bold text-foreground truncate leading-tight">
+          <p className="text-xs font-bold text-white truncate leading-tight">
             {card.title}
           </p>
-          <p className="text-[11px] text-muted-foreground truncate mt-0.5">
+          <p className="text-[11px] text-[#7E97B8] truncate mt-0.5">
             {card.subtitle}
           </p>
         </div>

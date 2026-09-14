@@ -36,21 +36,27 @@ export function SectionHeading({
       )}
     >
       {label && (
-        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+        <div
+          className={cn(
+            "mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(0,245,212,0.25)] bg-[rgba(0,245,212,0.06)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#00F5D4]",
+            align === "center" && "mx-auto"
+          )}
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-[#00F5D4] animate-pulse" />
           {label}
-        </p>
+        </div>
       )}
-      <h2 className="font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+      <h2 className="font-serif text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
         {title}
         {titleAccent && (
           <>
             {" "}
-            <span className="text-gold">{titleAccent}</span>
+            <span className="text-gradient-cyan">{titleAccent}</span>
           </>
         )}
       </h2>
       {description && (
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg lg:mt-6">
+        <p className="mt-4 text-base leading-relaxed text-[#7E97B8] sm:text-lg lg:mt-6">
           {description}
         </p>
       )}

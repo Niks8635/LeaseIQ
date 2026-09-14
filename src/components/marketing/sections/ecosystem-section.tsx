@@ -227,20 +227,20 @@ export function EcosystemSection() {
   });
 
   return (
-    <section className="w-full bg-[#FAFAF8] section-padding py-24 sm:py-32 overflow-hidden relative border-t border-b border-border/60">
+    <section className="w-full bg-[#040D1A] section-padding py-24 sm:py-32 overflow-hidden relative border-t border-b border-[rgba(0,245,212,0.1)]">
       {/* Decorative Radial Lighting Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gold/5 blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#00F5D4]/5 blur-[140px] pointer-events-none -z-10" />
 
       <div className="container-wide relative z-10">
         {/* Header Badge & Title */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold/15 border border-gold/30 text-gold text-xs font-semibold uppercase tracking-wider mb-4 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00F5D4]/10 border border-[#00F5D4]/30 text-[#00F5D4] text-xs font-semibold uppercase tracking-wider mb-4 shadow-sm">
             <Sparkles className="w-3.5 h-3.5" /> Unified Operating Architecture
           </div>
-          <h2 className="font-serif text-3xl sm:text-5xl font-medium text-[#1C1C1E] tracking-tight mb-4">
-            The Complete Connected Ecosystem
+          <h2 className="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4">
+            The Complete Connected <span className="text-gradient-cyan">Ecosystem</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#1C1C1E]/75 leading-relaxed font-normal">
+          <p className="text-base sm:text-lg text-[#7E97B8] leading-relaxed font-normal">
             Eliminate fragmented software and disconnected paper trails. Every gate barrier, bank transaction, resident ticket, and vendor audit connects directly into the central LeaseIQ ERP backbone.
           </p>
         </div>
@@ -256,39 +256,39 @@ export function EcosystemSection() {
             viewBox="0 0 720 720"
           >
             <defs>
-              {/* Linear gold gradient for connection lines */}
-              <linearGradient id="goldBeam" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#C9A96E" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#C9A96E" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#C9A96E" stopOpacity="0.8" />
+              {/* Linear cyan gradient for connection lines */}
+              <linearGradient id="cyanBeam" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#00F5D4" stopOpacity="0.8" />
+                <stop offset="50%" stopColor="#3B82F6" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#00F5D4" stopOpacity="0.8" />
               </linearGradient>
 
               {/* Active illuminated beam */}
-              <linearGradient id="activeBeam" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#E5C384" stopOpacity="1" />
-                <stop offset="100%" stopColor="#C9A96E" stopOpacity="0.8" />
+              <linearGradient id="activeCyanBeam" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#00F5D4" stopOpacity="1" />
+                <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.9" />
               </linearGradient>
 
               {/* Radial Core Glow */}
               <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#C9A96E" stopOpacity="0.25" />
-                <stop offset="100%" stopColor="#C9A96E" stopOpacity="0" />
+                <stop offset="0%" stopColor="#00F5D4" stopOpacity="0.2" />
+                <stop offset="100%" stopColor="#00F5D4" stopOpacity="0" />
               </radialGradient>
             </defs>
 
             {/* Core Background Radiance */}
             <circle cx={centerX} cy={centerY} r="180" fill="url(#hubGlow)" />
 
-            {/* Outer Mesh Inter-Connecting Ring (Connecting each node to its neighbor) */}
+            {/* Outer Mesh Inter-Connecting Ring */}
             <circle
               cx={centerX}
               cy={centerY}
               r={radius}
               fill="none"
-              stroke="#C9A96E"
+              stroke="#00F5D4"
               strokeWidth="1.5"
               strokeDasharray="4 8"
-              opacity="0.3"
+              opacity="0.25"
             />
 
             {/* Radial Beams from Core to each Satellite Node */}
@@ -302,10 +302,10 @@ export function EcosystemSection() {
                     y1={centerY}
                     x2={pos.x}
                     y2={pos.y}
-                    stroke={isSelected ? "url(#activeBeam)" : "url(#goldBeam)"}
+                    stroke={isSelected ? "url(#activeCyanBeam)" : "url(#cyanBeam)"}
                     strokeWidth={isSelected ? "3" : "1.8"}
                     strokeDasharray={isSelected ? "none" : "5 5"}
-                    opacity={isSelected ? 1 : 0.45}
+                    opacity={isSelected ? 1 : 0.4}
                     className="transition-all duration-300"
                   />
 
@@ -314,7 +314,7 @@ export function EcosystemSection() {
                     cx={pos.x}
                     cy={pos.y}
                     r={isSelected ? "5" : "3.5"}
-                    fill={isSelected ? "#C9A96E" : "#1C1C1E"}
+                    fill={isSelected ? "#00F5D4" : "#3B82F6"}
                     animate={{
                       cx: [centerX, pos.x, centerX],
                       cy: [centerY, pos.y, centerY],
@@ -334,32 +334,32 @@ export function EcosystemSection() {
 
           {/* Central LeaseIQ Core ERP Hub */}
           <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-64 h-64 rounded-full bg-[#18181B] text-white flex flex-col items-center justify-center p-6 shadow-2xl border-4 border-white ring-4 ring-[#C9A96E]/40"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-64 h-64 rounded-full bg-[#0A1B30] text-white flex flex-col items-center justify-center p-6 shadow-2xl border-4 border-[#00F5D4] ring-4 ring-[#00F5D4]/30 shadow-[0_0_50px_rgba(0,245,212,0.3)]"
           >
             {/* Animated Radiating Pulse Waves */}
-            <div className="absolute inset-0 rounded-full border-2 border-gold/40 animate-ping pointer-events-none opacity-20" />
-            <div className="absolute -inset-3 rounded-full border border-gold/30 animate-pulse pointer-events-none opacity-40" />
+            <div className="absolute inset-0 rounded-full border-2 border-[#00F5D4]/40 animate-ping pointer-events-none opacity-25" />
+            <div className="absolute -inset-3 rounded-full border border-[#00F5D4]/30 animate-pulse pointer-events-none opacity-40" />
 
             {/* Core Badge Content */}
-            <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-gold/20 text-gold text-[10px] font-bold tracking-wider uppercase mb-2 border border-gold/40">
-              <Cpu className="w-3 h-3 animate-spin text-gold" style={{ animationDuration: "10s" }} />
+            <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#00F5D4]/20 text-[#00F5D4] text-[10px] font-bold tracking-wider uppercase mb-2 border border-[#00F5D4]/40">
+              <Cpu className="w-3 h-3 animate-spin text-[#00F5D4]" style={{ animationDuration: "10s" }} />
               Core Engine
             </div>
 
             <h3 className="font-serif text-2xl font-bold tracking-wider text-white">
               LEASEIQ
             </h3>
-            <span className="text-[11px] uppercase tracking-widest text-[#E5C384] font-semibold mt-0.5">
+            <span className="text-[11px] uppercase tracking-widest text-[#00F5D4] font-semibold mt-0.5">
               Operating Platform
             </span>
 
             {/* Live Connected Event Throughput */}
-            <div className="mt-3 pt-3 border-t border-white/15 w-full flex flex-col items-center text-center">
-              <div className="flex items-center gap-1.5 text-emerald-400 text-xs font-semibold">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="mt-3 pt-3 border-t border-[rgba(0,245,212,0.2)] w-full flex flex-col items-center text-center">
+              <div className="flex items-center gap-1.5 text-[#00F5D4] text-xs font-semibold">
+                <span className="w-2 h-2 rounded-full bg-[#00F5D4] animate-pulse" />
                 24,190 Events Today
               </div>
-              <span className="text-[10px] text-white/70 mt-0.5 font-medium">
+              <span className="text-[10px] text-[#7E97B8] mt-0.5 font-medium">
                 Mesh Latency: &lt; 8ms
               </span>
             </div>
@@ -391,10 +391,10 @@ export function EcosystemSection() {
                   transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
                   whileHover={{ scale: 1.08 }}
                   className={cn(
-                    "w-44 p-3 rounded-2xl border transition-all duration-300 shadow-md backdrop-blur-md flex flex-col justify-between",
+                    "w-44 p-3 rounded-2xl border transition-all duration-300 shadow-xl backdrop-blur-xl flex flex-col justify-between",
                     isSelected
-                      ? "bg-white border-[#C9A96E] ring-4 ring-gold/25 shadow-xl -translate-y-1"
-                      : "bg-white/95 border-[#1C1C1E]/10 hover:border-[#C9A96E]/60 hover:shadow-lg"
+                      ? "bg-[#0A1B30] border-[#00F5D4] ring-4 ring-[#00F5D4]/30 shadow-[0_0_25px_rgba(0,245,212,0.3)] -translate-y-1 text-white"
+                      : "bg-[#0A1B30]/85 border-[rgba(0,245,212,0.15)] text-white hover:border-[#00F5D4]/50 hover:shadow-lg"
                   )}
                 >
                   {/* Top Bar: Icon + Status */}
@@ -402,8 +402,8 @@ export function EcosystemSection() {
                     <div className={cn(
                       "w-8 h-8 rounded-xl flex items-center justify-center transition-colors",
                       isSelected
-                        ? "bg-gold text-white"
-                        : "bg-gold/10 text-gold group-hover:bg-gold group-hover:text-white"
+                        ? "bg-[#00F5D4] text-[#040D1A]"
+                        : "bg-[#00F5D4]/10 text-[#00F5D4] group-hover:bg-[#00F5D4] group-hover:text-[#040D1A]"
                     )}>
                       <node.icon className="w-4 h-4" />
                     </div>
@@ -411,32 +411,32 @@ export function EcosystemSection() {
                     <span className={cn(
                       "text-[9px] font-bold px-2 py-0.5 rounded-full border flex items-center gap-1",
                       isSelected
-                        ? "bg-emerald-50 text-emerald-700 border-emerald-300"
-                        : "bg-zinc-50 text-zinc-600 border-zinc-200"
+                        ? "bg-[#00F5D4]/20 text-[#00F5D4] border-[#00F5D4]/40"
+                        : "bg-[#0D223E] text-[#7E97B8] border-[rgba(0,245,212,0.15)]"
                     )}>
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#00F5D4] animate-pulse" />
                       {node.status}
                     </span>
                   </div>
 
                   {/* Node Label */}
-                  <h4 className="text-xs font-serif font-bold text-[#1C1C1E] tracking-tight truncate">
+                  <h4 className="text-xs font-serif font-bold text-white tracking-tight truncate">
                     {node.label}
                   </h4>
 
                   {/* Live Connected Metric Badge */}
-                  <div className="mt-1.5 pt-1.5 border-t border-zinc-100 flex items-center justify-between">
+                  <div className="mt-1.5 pt-1.5 border-t border-[rgba(0,245,212,0.12)] flex items-center justify-between">
                     <div>
-                      <div className="text-[11px] font-bold text-emerald-600 tracking-tight">
+                      <div className="text-[11px] font-bold text-[#00F5D4] tracking-tight">
                         {node.liveMetric}
                       </div>
-                      <div className="text-[9px] text-[#1C1C1E]/60 font-medium truncate">
+                      <div className="text-[9px] text-[#7E97B8] font-medium truncate">
                         {node.metricLabel}
                       </div>
                     </div>
                     <ArrowRight className={cn(
-                      "w-3 h-3 text-gold transition-transform",
-                      isSelected ? "translate-x-0.5 text-gold" : "text-zinc-300 group-hover:text-gold"
+                      "w-3 h-3 transition-transform",
+                      isSelected ? "translate-x-0.5 text-[#00F5D4]" : "text-[#7E97B8] group-hover:text-[#00F5D4]"
                     )} />
                   </div>
                 </motion.div>
@@ -447,26 +447,26 @@ export function EcosystemSection() {
 
         {/* ================= INTERACTIVE TELEMETRY & DATA STREAM INSPECTOR ================= */}
         <div className="max-w-4xl mx-auto mt-4">
-          <div className="rounded-3xl border border-border/80 bg-white shadow-premium p-6 sm:p-8 relative overflow-hidden">
+          <div className="rounded-3xl border border-[rgba(0,245,212,0.18)] bg-[#0A1B30]/90 shadow-2xl p-6 sm:p-8 relative overflow-hidden backdrop-blur-xl card-accent-line text-white">
             {/* Top Accent Strip */}
-            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-gold/30 via-gold to-gold/30" />
+            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#00F5D4] to-transparent" />
 
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-border/60">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[rgba(0,245,212,0.12)]">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-gold/15 border border-gold/30 flex items-center justify-center text-gold shadow-sm">
+                <div className="w-12 h-12 rounded-2xl bg-[#00F5D4]/15 border border-[#00F5D4]/30 flex items-center justify-center text-[#00F5D4] shadow-sm">
                   <activeNode.icon className="w-6 h-6" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gold/10 text-gold uppercase tracking-wider">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#00F5D4]/10 text-[#00F5D4] uppercase tracking-wider border border-[#00F5D4]/20">
                       {activeNode.category}
                     </span>
-                    <span className="text-xs text-emerald-600 font-semibold flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-xs text-[#00F5D4] font-semibold flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#00F5D4] animate-pulse" />
                       Live Data Pipe
                     </span>
                   </div>
-                  <h3 className="font-serif text-xl sm:text-2xl font-semibold text-[#1C1C1E] mt-0.5">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-white mt-0.5">
                     {activeNode.label} ⇄ LeaseIQ Core Hub
                   </h3>
                 </div>
@@ -481,8 +481,8 @@ export function EcosystemSection() {
                     className={cn(
                       "p-2 rounded-xl text-xs font-medium transition-all flex items-center gap-1.5 whitespace-nowrap",
                       selectedNodeIndex === i
-                        ? "bg-[#1C1C1E] text-white shadow-sm font-semibold"
-                        : "bg-zinc-100 hover:bg-zinc-200 text-[#1C1C1E]/70"
+                        ? "bg-[#00F5D4] text-[#040D1A] shadow-md font-bold"
+                        : "bg-[#061220] hover:bg-[rgba(0,245,212,0.1)] text-[#7E97B8] border border-[rgba(0,245,212,0.12)]"
                     )}
                     title={node.label}
                   >
@@ -496,47 +496,47 @@ export function EcosystemSection() {
             {/* Connected Data Details Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
               {/* Telemetry Metric 1: Live Connected Feed */}
-              <div className="p-4 rounded-2xl bg-[#FAFAF8] border border-border/70">
-                <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider block mb-1">
+              <div className="p-4 rounded-2xl bg-[#061220] border border-[rgba(0,245,212,0.12)]">
+                <span className="text-[10px] uppercase font-bold text-[#7E97B8] tracking-wider block mb-1">
                   Active Connected Feed
                 </span>
-                <div className="text-lg font-serif font-bold text-[#1C1C1E]">
+                <div className="text-lg font-serif font-bold text-white">
                   {activeNode.liveMetric}
                 </div>
-                <div className="text-xs text-emerald-600 font-semibold mt-0.5">
+                <div className="text-xs text-[#00F5D4] font-semibold mt-0.5">
                   {activeNode.telemetry.throughput}
                 </div>
-                <div className="text-[11px] text-[#1C1C1E]/65 mt-2 font-mono break-all">
+                <div className="text-[11px] text-[#7E97B8] mt-2 font-mono break-all">
                   {activeNode.telemetry.endpoint}
                 </div>
               </div>
 
               {/* Telemetry Metric 2: Sync Protocol & Latency */}
-              <div className="p-4 rounded-2xl bg-[#FAFAF8] border border-border/70">
-                <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider block mb-1">
+              <div className="p-4 rounded-2xl bg-[#061220] border border-[rgba(0,245,212,0.12)]">
+                <span className="text-[10px] uppercase font-bold text-[#7E97B8] tracking-wider block mb-1">
                   Sync Protocol & Speed
                 </span>
-                <div className="text-lg font-serif font-bold text-[#1C1C1E] flex items-center gap-1.5">
-                  <Activity className="w-4 h-4 text-gold" />
+                <div className="text-lg font-serif font-bold text-white flex items-center gap-1.5">
+                  <Activity className="w-4 h-4 text-[#00F5D4]" />
                   {activeNode.telemetry.latency}
                 </div>
-                <div className="text-xs text-[#1C1C1E]/80 font-medium mt-0.5">
+                <div className="text-xs text-[#E2EBF7]/80 font-medium mt-0.5">
                   {activeNode.telemetry.activeProtocol}
                 </div>
-                <div className="text-[11px] text-emerald-600 mt-2 flex items-center gap-1 font-medium">
+                <div className="text-[11px] text-[#00F5D4] mt-2 flex items-center gap-1 font-medium">
                   <Lock className="w-3 h-3" /> End-to-End Encrypted (TLS 1.3)
                 </div>
               </div>
 
               {/* Telemetry Metric 3: Inter-Module Relay */}
-              <div className="p-4 rounded-2xl bg-[#FAFAF8] border border-border/70">
-                <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider block mb-1">
+              <div className="p-4 rounded-2xl bg-[#061220] border border-[rgba(0,245,212,0.12)]">
+                <span className="text-[10px] uppercase font-bold text-[#7E97B8] tracking-wider block mb-1">
                   Connected Entities
                 </span>
-                <div className="text-xs font-semibold text-[#1C1C1E] leading-snug">
+                <div className="text-xs font-semibold text-white leading-snug">
                   {activeNode.telemetry.connectedEntities}
                 </div>
-                <div className="mt-2 text-[11px] text-[#1C1C1E]/70 leading-relaxed">
+                <div className="mt-2 text-[11px] text-[#7E97B8] leading-relaxed">
                   {activeNode.telemetry.actionTrigger}
                 </div>
               </div>
@@ -546,17 +546,17 @@ export function EcosystemSection() {
 
         {/* ================= MOBILE RESPONSIVE GRID ================= */}
         <div className="lg:hidden mt-8">
-          <div className="mb-4 p-4 rounded-2xl bg-[#1C1C1E] text-white flex items-center justify-between">
+          <div className="mb-4 p-4 rounded-2xl bg-[#0A1B30] text-white flex items-center justify-between border border-[rgba(0,245,212,0.18)] shadow-lg">
             <div>
-              <div className="text-[10px] uppercase tracking-widest text-gold font-bold">LeaseIQ Core Hub</div>
+              <div className="text-[10px] uppercase tracking-widest text-[#00F5D4] font-bold">LeaseIQ Core Hub</div>
               <div className="text-lg font-serif font-bold">24,190 Events Processed</div>
             </div>
             <div className="text-right">
-              <span className="text-xs text-emerald-400 font-semibold flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-xs text-[#00F5D4] font-semibold flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-[#00F5D4] animate-pulse" />
                 8 Modules Synced
               </span>
-              <span className="text-[10px] text-white/60">&lt; 8ms Mesh Latency</span>
+              <span className="text-[10px] text-[#7E97B8]">&lt; 8ms Mesh Latency</span>
             </div>
           </div>
 
@@ -566,24 +566,24 @@ export function EcosystemSection() {
                 key={node.id}
                 onClick={() => setSelectedNodeIndex(i)}
                 className={cn(
-                  "p-4 rounded-2xl border transition-all cursor-pointer",
+                  "p-4 rounded-2xl border transition-all cursor-pointer bg-[#0A1B30]",
                   selectedNodeIndex === i
-                    ? "bg-white border-gold ring-2 ring-gold/20 shadow-md"
-                    : "bg-white/90 border-border/70"
+                    ? "border-[#00F5D4] ring-2 ring-[#00F5D4]/30 shadow-lg shadow-[#00F5D4]/10"
+                    : "border-[rgba(0,245,212,0.14)]"
                 )}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <div className="w-8 h-8 rounded-xl bg-gold/15 text-gold flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-xl bg-[#00F5D4]/15 text-[#00F5D4] flex items-center justify-center">
                     <node.icon className="w-4 h-4" />
                   </div>
-                  <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  <span className="text-[10px] font-bold text-[#00F5D4] bg-[#00F5D4]/10 px-2 py-0.5 rounded-full border border-[#00F5D4]/30">
                     {node.status}
                   </span>
                 </div>
-                <h4 className="font-serif text-sm font-bold text-[#1C1C1E]">{node.label}</h4>
-                <div className="mt-2 pt-2 border-t border-zinc-100 flex items-center justify-between text-xs">
-                  <span className="font-bold text-emerald-600">{node.liveMetric}</span>
-                  <span className="text-[10px] text-muted-foreground">{node.connectionLine}</span>
+                <h4 className="font-serif text-sm font-bold text-white">{node.label}</h4>
+                <div className="mt-2 pt-2 border-t border-[rgba(0,245,212,0.1)] flex items-center justify-between text-xs">
+                  <span className="font-bold text-[#00F5D4]">{node.liveMetric}</span>
+                  <span className="text-[10px] text-[#7E97B8]">{node.connectionLine}</span>
                 </div>
               </div>
             ))}
