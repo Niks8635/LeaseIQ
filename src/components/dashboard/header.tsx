@@ -75,12 +75,12 @@ export function DashboardHeader({
 
         <button
           onClick={onOpenCommand}
-          className="flex items-center gap-2 rounded-lg border border-border bg-muted/40 px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:border-gold/30 hover:bg-muted"
+          className="flex items-center gap-2 rounded-lg border border-[rgba(0,245,212,0.18)] bg-[#0A1B30]/60 px-3 py-1.5 text-xs text-[#7E97B8] transition-colors hover:border-[#00F5D4] hover:bg-[#0A1B30]"
         >
-          <Search className="h-3.5 w-3.5 text-gold" />
+          <Search className="h-3.5 w-3.5 text-[#00F5D4]" />
           <span className="hidden sm:inline">Search platform or jump to...</span>
           <span className="sm:hidden">Search...</span>
-          <kbd className="hidden sm:inline-flex items-center gap-0.5 rounded border border-border bg-background px-1.5 font-mono text-[9px] text-muted-foreground">
+          <kbd className="hidden sm:inline-flex items-center gap-0.5 rounded border border-[rgba(0,245,212,0.2)] bg-[#040D1A] px-1.5 font-mono text-[9px] text-[#7E97B8]">
             ⌘K
           </kbd>
         </button>
@@ -90,24 +90,24 @@ export function DashboardHeader({
       <div className="flex items-center gap-2 sm:gap-3">
         {/* Persona / Role Switcher */}
         <DropdownMenu>
-          <DropdownMenuTrigger className="hidden sm:flex items-center gap-1.5 text-xs font-medium border border-gold/30 bg-gold/5 text-foreground hover:bg-gold/10 h-7 rounded-md px-2.5 transition-colors cursor-pointer">
-            <UserCheck className="h-3.5 w-3.5 text-gold" />
+          <DropdownMenuTrigger className="hidden sm:flex items-center gap-1.5 text-xs font-medium border border-[rgba(0,245,212,0.3)] bg-[#00F5D4]/10 text-white hover:bg-[#00F5D4]/20 h-7 rounded-md px-2.5 transition-colors cursor-pointer">
+            <UserCheck className="h-3.5 w-3.5 text-[#00F5D4]" />
             <span>{currentRole}</span>
             <ChevronDown className="h-3 w-3 opacity-60" />
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuLabel className="text-xs text-muted-foreground uppercase tracking-wider">
+          <DropdownMenuContent align="end" className="w-56 bg-[#0A1B30] border-[rgba(0,245,212,0.2)] text-white">
+            <DropdownMenuLabel className="text-xs text-[#7E97B8] uppercase tracking-wider">
               Switch Test Persona
             </DropdownMenuLabel>
-            <DropdownMenuSeparator />
+            <DropdownMenuSeparator className="border-[rgba(0,245,212,0.1)]" />
             {personas.map((p) => (
               <DropdownMenuItem
                 key={p.role}
                 onClick={() => handleSwitchPersona(p)}
-                className="text-xs cursor-pointer flex justify-between items-center"
+                className="text-xs cursor-pointer flex justify-between items-center text-white hover:bg-[#040D1A] hover:text-[#00F5D4]"
               >
                 <span>{p.name}</span>
-                {currentRole === p.role && <span className="h-1.5 w-1.5 rounded-full bg-gold" />}
+                {currentRole === p.role && <span className="h-1.5 w-1.5 rounded-full bg-[#00F5D4]" />}
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
@@ -115,17 +115,6 @@ export function DashboardHeader({
 
         {/* Notifications */}
         <NotificationCenter />
-
-        {/* Theme Toggle */}
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="text-muted-foreground hover:text-foreground"
-          aria-label="Toggle theme"
-        >
-          {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-        </Button>
 
         {/* User Menu */}
         <DropdownMenu>

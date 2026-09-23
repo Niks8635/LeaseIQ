@@ -40,6 +40,19 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  async rewrites() {
+    return [
+      { source: "/resident-portal", destination: "/dashboard/resident-portal" },
+      { source: "/residents", destination: "/dashboard/residents" },
+      { source: "/complaints", destination: "/dashboard/complaints" },
+      { source: "/facilities", destination: "/dashboard/facilities" },
+      { source: "/intelligence", destination: "/dashboard/intelligence" },
+      { source: "/analytics", destination: "/dashboard/analytics" },
+      { source: "/operations", destination: "/dashboard/operations" },
+      { source: "/audit", destination: "/dashboard/audit" },
+    ];
+  },
 };
 
 export default nextConfig;

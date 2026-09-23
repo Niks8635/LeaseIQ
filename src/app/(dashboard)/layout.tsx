@@ -27,7 +27,7 @@ export default function DashboardLayout({
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-background text-foreground">
+    <div className="flex min-h-screen bg-[#040D1A] text-white">
       {/* Desktop Sidebar */}
       <DashboardSidebar className="hidden md:flex md:w-64 md:shrink-0 sticky top-0 h-screen" />
 
