@@ -2,11 +2,7 @@
 
 import * as React from "react";
 import { Bell, Check, Sparkles, UserCheck, CreditCard, Wrench } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface NotificationItem {
   id: string;
@@ -18,6 +14,9 @@ interface NotificationItem {
 }
 
 export function NotificationCenter() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
   const [notifications, setNotifications] = React.useState<NotificationItem[]>([
     {
       id: "1",
@@ -53,83 +52,120 @@ export function NotificationCenter() {
     },
   ]);
 
+  // Handle click outside to close dropdown
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
   const unreadCount = notifications.filter((n) => !n.read).length;
 
-  const markAllAsRead = () => {
-    setNotifications(notifications.map((n) => ({ ...n, read: true })));
+  const markAllAsRead = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
   };
 
   const markAsRead = (id: string) => {
-    setNotifications(
-      notifications.map((n) => (n.id === id ? { ...n, read: true } : n))
+    setNotifications((prev) =>
+      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
     );
   };
 
   const getIcon = (cat: NotificationItem["category"]) => {
     switch (cat) {
       case "visitor":
-        return <UserCheck className="h-4 w-4 text-success" />;
+        return <UserCheck className="h-4 w-4 text-[#00F5D4]" />;
       case "payment":
-        return <CreditCard className="h-4 w-4 text-gold" />;
+        return <CreditCard className="h-4 w-4 text-[#00F5D4]" />;
       case "ai":
-        return <Sparkles className="h-4 w-4 text-blue-500" />;
+        return <Sparkles className="h-4 w-4 text-blue-400" />;
       case "complaint":
-        return <Wrench className="h-4 w-4 text-warning" />;
+        return <Wrench className="h-4 w-4 text-amber-400" />;
     }
   };
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="relative flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground transition-colors cursor-pointer">
-        <Bell className="h-5 w-5" />
+    <div className="relative" ref={containerRef}>
+      {/* Bell Button */}
+      <button
+        type="button"
+        onClick={() => setIsOpen((prev) => !prev)}
+        aria-label="Notifications"
+        aria-expanded={isOpen}
+        className="relative flex h-8 w-8 items-center justify-center rounded-lg border border-[rgba(0,245,212,0.18)] bg-[#0A1B30]/60 text-[#7E97B8] hover:border-[#00F5D4] hover:bg-[#0A1B30] hover:text-[#00F5D4] transition-all cursor-pointer"
+      >
+        <Bell className="h-4 w-4" />
         {unreadCount > 0 && (
-          <span className="absolute right-1.5 top-1.5 flex h-2 w-2 rounded-full bg-gold animate-pulse" />
+          <span className="absolute right-1.5 top-1.5 flex h-2 w-2 rounded-full bg-amber-400 ring-2 ring-[#040D1A] animate-pulse" />
         )}
-      </DropdownMenuTrigger>
+      </button>
 
-      <DropdownMenuContent align="end" className="w-80 p-0 border-border bg-popover shadow-xl">
-        <div className="flex items-center justify-between border-b border-border px-4 py-3">
-          <div className="flex items-center gap-2">
-            <span className="text-sm font-semibold text-foreground">Notifications</span>
-            {unreadCount > 0 && (
-              <span className="rounded-full bg-gold/10 px-2 py-0.5 text-[10px] font-semibold text-gold">
-                {unreadCount} new
-              </span>
-            )}
-          </div>
-          {unreadCount > 0 && (
-            <button
-              onClick={markAllAsRead}
-              className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 cursor-pointer"
-            >
-              <Check className="h-3 w-3" /> Mark all read
-            </button>
-          )}
-        </div>
-
-        <div className="max-h-[320px] overflow-y-auto divide-y divide-border/50">
-          {notifications.map((n) => (
-            <div
-              key={n.id}
-              onClick={() => markAsRead(n.id)}
-              className={`p-3.5 flex items-start gap-3 transition-colors cursor-pointer hover:bg-accent ${
-                !n.read ? "bg-accent/40" : ""
-              }`}
-            >
-              <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-background border border-border">
-                {getIcon(n.category)}
+      {/* Dropdown Panel */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 8, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 6, scale: 0.96 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="absolute right-0 top-full mt-2 w-80 sm:w-96 rounded-2xl border border-[rgba(0,245,212,0.22)] bg-[#0A1B30]/95 backdrop-blur-2xl shadow-2xl z-50 overflow-hidden"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between border-b border-[rgba(0,245,212,0.12)] px-4 py-3 bg-[#061220]/60">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-semibold text-white tracking-wide">Notifications</span>
+                {unreadCount > 0 && (
+                  <span className="rounded-full bg-[#00F5D4]/15 border border-[#00F5D4]/30 px-2 py-0.5 text-[10px] font-semibold text-[#00F5D4]">
+                    {unreadCount} new
+                  </span>
+                )}
               </div>
-              <div className="flex-1 space-y-1">
-                <div className="flex items-center justify-between">
-                  <p className="text-xs font-semibold text-foreground">{n.title}</p>
-                  <span className="text-[10px] text-muted-foreground">{n.time}</span>
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">{n.message}</p>
-              </div>
+              {unreadCount > 0 && (
+                <button
+                  type="button"
+                  onClick={markAllAsRead}
+                  className="text-[11px] text-[#7E97B8] hover:text-[#00F5D4] flex items-center gap-1 transition-colors cursor-pointer"
+                >
+                  <Check className="h-3 w-3" /> Mark all read
+                </button>
+              )}
             </div>
-          ))}
-        </div>
-      </DropdownMenuContent>
-    </DropdownMenu>
+
+            {/* List */}
+            <div className="max-h-[340px] overflow-y-auto divide-y divide-[rgba(0,245,212,0.08)]">
+              {notifications.map((n) => (
+                <div
+                  key={n.id}
+                  onClick={() => markAsRead(n.id)}
+                  className={`p-3.5 flex items-start gap-3 transition-colors cursor-pointer hover:bg-[#061220]/80 ${
+                    !n.read ? "bg-[rgba(0,245,212,0.04)]" : ""
+                  }`}
+                >
+                  <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-[#061220] border border-[rgba(0,245,212,0.18)]">
+                    {getIcon(n.category)}
+                  </div>
+                  <div className="flex-1 min-w-0 space-y-1">
+                    <div className="flex items-center justify-between gap-1">
+                      <p className="text-xs font-medium text-white truncate">{n.title}</p>
+                      <span className="text-[10px] text-[#7E97B8] shrink-0 font-mono">{n.time}</span>
+                    </div>
+                    <p className="text-[11px] text-[#7E97B8] leading-relaxed line-clamp-2">{n.message}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
