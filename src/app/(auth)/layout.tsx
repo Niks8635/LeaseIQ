@@ -18,22 +18,22 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         <div className="relative z-10 flex items-center justify-between">
           <Link href="/" className="flex items-baseline gap-0.5">
             <span className="text-2xl font-bold tracking-tight text-white">Lease</span>
-            <span className="text-2xl font-bold tracking-tight text-gold">IQ</span>
+            <span className="text-2xl font-bold tracking-tight text-[#00F5D4]">IQ</span>
             <span className="ml-2 text-[0.7rem] font-medium uppercase tracking-[0.25em] text-white/70">Societies</span>
           </Link>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-[11px] font-medium text-white/90 border border-white/15">
-            <ShieldCheck className="w-3.5 h-3.5 text-gold" /> SOC-2 & DPDP Compliant
+            <ShieldCheck className="w-3.5 h-3.5 text-[#00F5D4]" /> SOC-2 & DPDP Compliant
           </span>
         </div>
 
         {/* Center: Hero Statement & Floating Media Card */}
         <div className="relative z-10 my-auto py-12 max-w-lg space-y-8">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-widest text-gold mb-3 block">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#00F5D4] mb-3 block">
               The Smarter Way to Run Your Society
             </span>
             <h1 className="font-serif text-4xl xl:text-5xl font-bold tracking-tight text-white leading-tight">
-              One Intelligent Platform. <span className="text-gradient-gold">Every Society Operation.</span>
+              One Intelligent Platform. <span className="text-gradient-cyan">Every Society Operation.</span>
             </h1>
             <p className="mt-4 text-base text-white/80 leading-relaxed">
               Autonomous bank reconciliation, sub-second gate ANPR, and delightful resident living for over 500+ premier residential communities.
@@ -47,7 +47,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
                 <p className="text-xs text-white/70">Trusted Community Scale</p>
                 <p className="text-xl font-serif font-bold text-white mt-0.5">500+ Residential Societies</p>
               </div>
-              <span className="px-3 py-1 rounded-full bg-gold/20 text-gold text-xs font-semibold border border-gold/30">
+              <span className="px-3 py-1 rounded-full bg-[#00F5D4]/20 text-[#00F5D4] text-xs font-semibold border border-[#00F5D4]/30">
                 99.9% Uptime
               </span>
             </div>
@@ -66,14 +66,17 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       </div>
 
       {/* Right Side - Form */}
-      <div className="flex w-full flex-col items-center justify-center px-4 py-12 lg:w-1/2 bg-background">
-        <div className="w-full max-w-md">
+      <div className="flex w-full flex-col items-center justify-center px-4 py-12 lg:w-1/2 bg-[#040D1A] relative">
+        {/* Subtle ambient glow */}
+        <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-[radial-gradient(ellipse_at_center,rgba(0,245,212,0.06)_0%,transparent_70%)] pointer-events-none" />
+
+        <div className="w-full max-w-md relative z-10">
           {/* Mobile logo */}
           <div className="mb-8 lg:hidden">
             <Link href="/" className="flex items-baseline gap-0.5">
-              <span className="text-xl font-bold tracking-tight text-foreground">Lease</span>
-              <span className="text-xl font-bold tracking-tight text-gold">IQ</span>
-              <span className="ml-1.5 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-muted-foreground">Societies</span>
+              <span className="text-xl font-bold tracking-tight text-white">Lease</span>
+              <span className="text-xl font-bold tracking-tight text-[#00F5D4]">IQ</span>
+              <span className="ml-1.5 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-[#7E97B8]">Societies</span>
             </Link>
           </div>
           {children}
